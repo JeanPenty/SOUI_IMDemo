@@ -1,0 +1,76 @@
+﻿<SOUI name="mainWindow" 
+      title="@string/title" 
+      bigIcon="ICON_LOGO:32" 
+      smallIcon="ICON_LOGO:16" 
+      width="910" height="570" 
+      minsize="910,570"
+      margin="5,5,5,5"  
+      resizable="1" 
+      wndType="appMain"
+      appWnd="1"
+      sendWheel2Hover="1"
+      translucent="1">
+  <root skin="skin_shadow" cache="1">
+    <caption pos="5,5,-5,-5" colorBkgnd="rgb(230,234,238)" show="1" font="adding:0">
+      <imgbtn name="btn_close" skin="skin_common_close"    pos="-50,0" tip="关闭" animate="1" cursor="hand"/>
+      <imgbtn name="btn_max" skin="skin_common_max"  pos="-100,{0" animate="1" cursor="hand"/>
+      <imgbtn name="btn_restore" skin="skin_common_restore"  pos="-100,{0" show="0" animate="1" cursor="hand"/>
+      <imgbtn name="btn_min" skin="skin_common_min" pos="-150,{0" animate="1" cursor="hand"/>
+      <caption pos="0,0,64,-0" colorBkgnd="rgb(40,40,40)">
+        <img name="main_logo" pos="|-16,20" skin="skin_default_logo32p" msgTransparent="0" cursor="hand"/>
+        
+        <imgbtn name="btn_message" pos="{0,[20" skin="skin_message" cursor="hand"/>
+        <imgbtn name="btn_contact" pos="{0,[20" skin="skin_contact" cursor="hand"/>
+        <imgbtn name="btn_favorites" pos="{0,[20" skin="skin_favorites" cursor="hand"/>
+        <imgbtn name="btn_menu" pos="{0,-52" skin="skin_menu" cursor="hand"/>
+      </caption>
+      <caption pos="[0,0,320,-0" colorBkgnd="rgb(220,224,228)">
+        <edit name="search_edit" 
+              class="cls_edit"
+              pos="5,30,-42,60" 
+              colorBkgnd="rgb(220,224,228)" 
+              align="left" 
+              valign="center" 
+              inset="26,0,0,0" 
+              notifyChange="1" 
+              font="face:微软雅黑,size:12" 
+              autoWordSel="0"
+              colorText="#333333"
+              cueColor="#000000"
+              cueText="搜索" />
+        <imgbtn name="btn_add" pos="[5,{0" skin="skin_add" cursor="hand"/>
+        <img pos="15,37" skin="skin_search" />
+        <tabctrl pos="5,70,-5,-0" name="leftlist_tabctrl" tabHeight="0" colorBkgnd="rgb(220,224,228)">
+          <page title="lasttalk_page">
+            <include src="LAYOUT:XML_PAGE_LASTTALK" />
+          </page>
+          <page title="contact_page">
+            <include src="LAYOUT:XML_PAGE_CONTACT" />
+          </page>
+          <page title="favorites_page">
+            <include src="LAYOUT:XML_PAGE_FAVORITES" />
+          </page>
+        </tabctrl>
+      </caption>
+      <caption pos="[0,25,-0,-0" colorBkgnd="rgb(230,234,238)">
+        <text name="page_name"
+              pos="10,0,-75,35"
+              align="left"
+              dotted="1"
+              colorText="#333333"
+              font="face:微软雅黑,size:16,adding:1">SOUI个人好友名</text>
+        <imgbtn name="btn_more" pos="-40,{0" skin="skin_more" cursor="hand" />
+        <!--聊天窗口右侧子窗口布局测试  begin-->
+        <tabctrl pos="0,[2,-0,-0" name="chattab" tabHeight="0" colorBkgnd="rgb(230,234,238)">
+          <page title="select_none">
+            <caption pos="0,0,-0,-0" colorBkgnd="rgb(230,234,238)">
+              <img pos="|-24,|-100" skin="skin_default_logo48p" />
+            </caption>
+          </page>
+        </tabctrl>
+        <!--end-->
+      </caption>
+    </caption>
+    <shellnotifyicon id="110" menu="SMENU:menu_tray" ico="ICON_LOGO:16" tip="SOUI_IMDemo"/>
+  </root>
+</SOUI>

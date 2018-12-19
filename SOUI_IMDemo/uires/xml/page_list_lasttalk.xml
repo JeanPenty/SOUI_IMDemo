@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<include>
+  <caption pos="0,0,-0,-0" colorBkgnd="rgb(220,224,228)">
+    <listview pos="0,0,-0,-0"
+          name="lv_list_lasttalk"
+          headHeight="0"
+          focuable="0"
+          sbWid="10"
+          sbSkin="skin_vscroll"
+          colorBkgnd="rgb(220,224,228)">
+      <template itemHeight="60"
+                colorHover="rgb(220,219,218)"
+                colorSelected="rgb(196,196,196)"
+                trackMouseEvent="1">
+        <img name="lasttalk_face" pos="10,14,@32,@32" skin="skin_personal"/>
+        <text name="lasttalk_name"
+              pos="[10,{0,-75,30"
+              align="left"
+              dotted="1"
+              colorText="#333333"
+              font="face:微软雅黑,size:14,adding:1" />
+        <text name="lasttalk_message_time"
+              pos="[0,{0,-5,35"
+              align="right"
+              colorText="#7F7F7F"
+              font="face:微软雅黑,size:12" />
+        <text name="lasttalk_message_content"
+              pos="52,35,-30,50"
+              font="face:微软雅黑,size:10"
+              align="left"
+              dotted="1"
+              colorText="#7F7F7F"/>
+        <!--
+        <text name="lasttalk_message_unread_count"
+              pos="-31,-31"
+              size="16,16"
+              align="center"
+              valign="middle"
+              skin="skin_im_msgcnt"
+              colorText="#FFFFFF"
+              show="0"
+              font="font:微软雅黑,size:12"/>
+        -->
+      </template>
+    </listview>
+  </caption>
+</include>

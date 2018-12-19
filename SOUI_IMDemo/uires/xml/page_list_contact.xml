@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<include>
+  <scrollview pos="0,0,-0,-0"
+              viewSize="-1,-1"
+              sbWid="10"
+              sbSkin="skin_vscroll">
+    <caption pos="0,0,-0,-0" colorBkgnd="rgb(220,224,228)">
+      <text name="tip_new_friends"
+            pos="0,0,@310,@0"
+            font="face:微软雅黑,size:12"
+            colorText="rgb(153,153,153)"
+            inset="15,0,0,0"
+            align="left"
+            valign="center"
+            show="0">新的朋友</text>
+      <listview pos="0,[0,@310,@0"
+                name="lv_new_friends"
+                headHeight="0"
+                focuable="0"
+                colorBkgnd="rgb(220,224,228)">
+        <template itemHeight="50"
+                  colorHover="rgb(220,219,218)"
+                  colorSelected="rgb(196,196,196)">
+          <img name="newfriend_logo" pos="10,9" skin="skin_newfriends_logo"/>
+          <text name="newfriend_text"
+                pos="[10,{0,-0,}0"
+                align="left"
+                valign="center"
+                colorText="#000000"
+                font="face:微软雅黑,size:14,adding:1">新的朋友</text>
+        </template>
+      </listview>
+    </caption>
+  </scrollview>
+</include>

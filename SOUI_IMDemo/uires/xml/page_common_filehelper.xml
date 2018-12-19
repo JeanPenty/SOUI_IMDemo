@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<include>
+  <caption pos="0,0,-0,-150" margin="0,1,0,1" colorBorder="rgb(220,224,228)">
+    <imrichedit name="recv_richedit"
+                pos="10,[1,-10,-1"
+                bkgndBlend="1"
+                colorBkgnd="rgb(230,234,238)"
+                enableDragdrop="1"
+                readOnly="1"
+                autoSel="0"
+                multiLines="1"
+                autoWordSel="0"
+                vscrollBar="1"
+                wordWrap="1"
+                autoVscroll="0"
+                hscrollBar="0"
+                wantReturn="1"
+                scrollSpeed="60"
+                inset="5,0,12,5"
+                sbskin="skin_vscroll"/>
+  </caption>
+  <imgbtn name="btn_emotion" pos="10,[5" skin="skin_emotion" cursor="hand"/>
+  <imgbtn name="btn_image" pos="[10,{0" skin="skin_image" cursor="hand"/>
+  <imgbtn name="btn_file" pos="[10,{0" skin="skin_file" cursor="hand"/>
+  <imgbtn name="btn_snapshot" pos="[10,{0" skin="skin_snapshot" cursor="hand"/>
+  <imgbtn name="btn_snapshot_arrow" pos="[0,{5" skin="skin_snapshot_arrow" cursor="hand"/>
+  <imgbtn name="btn_history" pos="[10,{-5" skin="skin_history" cursor="hand"/>
+  <caption pos="0,[4,-0,-0">
+    <imrichedit name="send_richedit"
+                pos="10,0,-10,-35"
+                bkgndBlend="1"
+                enabledragdrop="1"
+                autoSel="0"
+                multiLines="1"
+                autoWordSel="0"
+                vscrollBar="1"
+                wordWrap="1"
+                autoVscroll="1"
+                hscrollBar="0"
+                wantReturn="1"
+                colorBkgnd="rgb(230,234,238)"
+                inset="0,0,8,0"
+                sbskin="skin_vscroll"/>
+    <imgbtn name="btn_send" pos="-70,[0" skin="skin_send" font="face:微软雅黑,size:12" text="发送" align="center" valign="center" cursor="hand"/>
+  </caption>
+</include>
