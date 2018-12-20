@@ -1,35 +1,847 @@
 <?xml version="1.0"?>
 <include>
-  <scrollview pos="0,0,-0,-0"
+  <caption pos="0,0,-0,-0" colorBkgnd="rgb(220,224,228)">
+    <scrollview pos="0,0,-0,-0"
               viewSize="-1,-1"
               sbWid="10"
               sbSkin="skin_vscroll">
-    <caption pos="0,0,-0,-0" colorBkgnd="rgb(220,224,228)">
-      <text name="tip_new_friends"
-            pos="0,0,@310,@0"
-            font="face:微软雅黑,size:12"
-            colorText="rgb(153,153,153)"
-            inset="15,0,0,0"
-            align="left"
-            valign="center"
-            show="0">新的朋友</text>
-      <listview pos="0,[0,@310,@0"
-                name="lv_new_friends"
-                headHeight="0"
-                focuable="0"
-                colorBkgnd="rgb(220,224,228)">
-        <template itemHeight="50"
-                  colorHover="rgb(220,219,218)"
-                  colorSelected="rgb(196,196,196)">
-          <img name="newfriend_logo" pos="10,9" skin="skin_newfriends_logo"/>
-          <text name="newfriend_text"
-                pos="[10,{0,-0,}0"
-                align="left"
-                valign="center"
-                colorText="#000000"
-                font="face:微软雅黑,size:14,adding:1">新的朋友</text>
-        </template>
-      </listview>
-    </caption>
-  </scrollview>
+      <window namne="wnd_newfriend" pos="0,0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_newfriend"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">新的朋友</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_newfriend"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="newfriend_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="newfriend_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">新的朋友</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_gzh" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_gzh"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">公众号</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_gzh"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="gzh_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="gzh_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">公众号</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_company" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_company"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">企业号</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_company"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="companys_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="companys_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">XXX企业</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_group" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_group"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">群聊</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_group"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="group_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="group_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">XXX群聊</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_a" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_a"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">A</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_a"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">AAAAAA</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_b" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_b"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">B</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_b"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">BBBBB</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_c" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_c"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">C</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_c"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">CCCCCC</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_d" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_d"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">D</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_d"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">DDD</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_e" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_e"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">E</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_e"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">EEEE</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_f" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_f"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">F</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_f"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">FFF</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_g" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_g"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">G</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_g"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">GGGG</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_h" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_h"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">H</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_h"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">HHH</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_i" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_i"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">I</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_i"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">IIIII</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_j" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_j"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">J</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_j"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">JJJJJ</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_k" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_k"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">K</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_k"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">KKKK</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_l" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_l"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">L</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_l"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">LLLLL</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_m" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_m"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">M</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_m"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">MMMM</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_n" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_n"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">N</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_n"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">NNNNN</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_o" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_o"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">O</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_o"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">OOOO</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_p" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_p"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">P</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_p"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">PPPP</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_q" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_q"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">Q</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_q"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">QQQQ</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_r" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_r"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">R</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_r"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">RRRR</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_s" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_s"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">S</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_s"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">SSSS</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_t" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_t"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">T</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_t"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">TTTTT</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_u" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_u"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">U</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_u"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">UUUUU</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_v" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_v"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">V</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_v"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">VVVVV</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_w" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_w"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">W</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_w"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">WWWWW</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_x" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_x"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">X</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_x"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">XXXXX</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_y" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_y"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">Y</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_y"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">YYYYY</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_z" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_z"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">Z</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_z"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">ZZZZ</text>
+          </template>
+        </listview>
+      </window>
+      <window name="wnd_personal_#" pos="{0,[0,@310,@0" colorBkgnd="rgb(220,224,228)" margin="0,0,0,1" colorBorder="rgb(210,210,210)">
+        <text name="title_personal_#"
+              pos="0,0,@310,@0"
+              font="face:微软雅黑,size:12"
+              colorText="rgb(153,153,153)"
+              inset="15,0,0,0"
+              align="left"
+              valign="center"
+              show="0">#</text>
+        <listview pos="0,[0,@310,@0"
+                  name="lv_personal_#"
+                  headHeight="0"
+                  focuable="0"
+                  colorBkgnd="rgb(220,224,228)">
+          <template itemHeight="50"
+                    colorHover="rgb(220,219,218)"
+                    colorSelected="rgb(196,196,196)">
+            <img name="personal_logo" pos="10,9" skin="skin_newfriends_logo"/>
+            <text name="personal_text"
+                  pos="[10,{0,-0,}0"
+                  align="left"
+                  valign="center"
+                  colorText="#000000"
+                  font="face:微软雅黑,size:14,adding:1">#####</text>
+          </template>
+        </listview>
+      </window>
+    </scrollview>
+  </caption>
 </include>
