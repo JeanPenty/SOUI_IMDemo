@@ -39,7 +39,7 @@
               cueText="搜索" />
         <imgbtn name="btn_add" pos="[5,{0" skin="skin_add" cursor="hand"/>
         <img pos="15,37" skin="skin_search" />
-        <tabctrl pos="5,70,-5,-0" name="leftlist_tabctrl" tabHeight="0" colorBkgnd="rgb(220,224,228)">
+        <tabctrl pos="0,70,-0,-0" name="leftlist_tabctrl" tabHeight="0" colorBkgnd="rgb(220,224,228)">
           <page title="lasttalk_page">
             <include src="LAYOUT:XML_PAGE_LASTTALK" />
           </page>
