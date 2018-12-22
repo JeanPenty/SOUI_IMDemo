@@ -25,6 +25,7 @@
 #include "interface/render-i.h"
 #include <atlcomcli.h>
 #include "IRichEditObjHost.h"
+#include "layout/SouiLayoutParamStruct.h"
 
 namespace SOUI
 {
@@ -81,8 +82,11 @@ namespace SOUI
         SStringW            GetName() { return _objName; }
         SStringW            GetId() { return _objId; }
         SStringW            GetData() { return _userData; }
-        int                 GetScale() const { return 100; }
-
+        int                 GetScale() const { return m_nScale; }
+		void				SetScale(int nScale) { UpdateScale(nScale); };
+		virtual	void		UpdateScale(int nScale);
+		void				GetScaleSkin(ISkinObj * &pSkin, int nScale);
+		CRect				GetMargin();
         //
         // 树操作
         //
@@ -112,7 +116,7 @@ namespace SOUI
         // ------------------------------------------------------------------------------
 
         SOUI_ATTRS_BEGIN()
-            ATTR_RECT(L"margin", _marginRect, FALSE)
+            ATTR_LAYOUTSIZE4(L"margin", _marginRect, FALSE)
             ATTR_STRINGW(L"id", _objId, FALSE)
             ATTR_STRINGW(L"name", _objName, FALSE)
             ATTR_STRINGW(L"cursor", _cursorName, FALSE)
@@ -122,9 +126,9 @@ namespace SOUI
             ATTR_ENUM_VALUE(L"center", ALIGN_CENTER)
             ATTR_ENUM_VALUE(L"right", ALIGN_RIGHT)
             ATTR_ENUM_END(_alignType)
-            SOUI_ATTRS_END()
+        SOUI_ATTRS_END()
 
-            RichEditObj *       _pParent;       // 父节点 
+        RichEditObj *       _pParent;       // 父节点 
         RichEditObj *       _pFirstChild;   // 第一子节点 
         RichEditObj *       _pLastChild;    // 最后节点 
         RichEditObj *       _pNextSibling;  // 前一兄弟节点 
@@ -137,10 +141,11 @@ namespace SOUI
         SStringW            _cursorName;    // 光标名称 
         IRichEditObjHost *  _pObjHost;      // 宿主richedit 
         CHARRANGE           _contentChr;    // 在richedit里面的字符下标,这个信息很重要
-        CRect               _marginRect;    // 对象的外边距 
+        SLayoutSize         _marginRect[4];    // 对象的外边距 
         CRect               _objRect;       // 在richedit里面的位置 
         BOOL                _isDirty;       // 位置信息改变了 
         AlignType           _alignType;     // 对齐方式,特指横向的对齐方式
+		int					m_nScale;
     };
 
     // ------------------------------------------------------------------------------
@@ -160,9 +165,7 @@ namespace SOUI
         RichEditText();
         ~RichEditText() {}
 
-        static SStringW MakeFormatedText(const SStringW& text, 
-			int fontSize = 10, 
-			const SStringW& font_face = L"微软雅黑");
+        static SStringW MakeFormatedText(const SStringW& text, int fontSize = 10);
 
         virtual BOOL InitFromXml(pugi::xml_node xmlNode);
         virtual void DrawObject(IRenderTarget *);
@@ -196,7 +199,7 @@ namespace SOUI
             ATTR_INT(L"link", _isLink, FALSE)
             ATTR_STRINGW(L"link-data", _linkData, FALSE)
             ATTR_STRINGW(L"text-type", _textType, FALSE)
-            SOUI_ATTRS_END()
+        SOUI_ATTRS_END()
 
     private:
 
@@ -243,7 +246,7 @@ namespace SOUI
         void        SetSkin(ISkinObj* pSkin, BOOL bAutoFree = TRUE);
         void        SetTextColor(COLORREF cr) { _textColor = cr; }
     protected:
-
+		virtual	void		UpdateScale(int nScale);
         LRESULT ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, BOOL& bHandled);
         void    BeforePaint(IRenderTarget *pRT, SPainter &painter);
         void    AfterPaint(IRenderTarget *pRT, SPainter &painter);
@@ -330,7 +333,7 @@ namespace SOUI
         void        SetCharRange(const CHARRANGE& chr);
 
     protected:
-
+		virtual	void		UpdateScale(int nScale);
         BOOL    GetAutoWrapped();
         BOOL    CalculateRect();
         BOOL    GetLineRect(int nLineNo, CRect& rcLine);
@@ -339,9 +342,9 @@ namespace SOUI
             ATTR_INT(L"break", _breakAtTheEnd, FALSE)
             ATTR_INT(L"simulate-align", _simulateAlign, FALSE)
             ATTR_INT(L"disable-layout", _disableLayout, FALSE)
-            SOUI_ATTRS_END()
+		SOUI_ATTRS_END()
 
-            BOOL    _autoWrapped;      /**< 是否一行显示不下,自动换行了*/
+        BOOL    _autoWrapped;      /**< 是否一行显示不下,自动换行了*/
         BOOL    _needUpdateLayout; /**< 标记是否需要重新设置缩进*/
         BOOL    _simulateAlign;    /**< 是否模拟右对齐。即设置左缩进,达到右对齐效果*/
         int     _breakAtTheEnd;    /**< 是否在段落后加上一个回车*/
@@ -360,14 +363,15 @@ namespace SOUI
 
     class RichEditContent : public RichEditObj
     {
-//#define THRESHOLD_FOR_AUTOLAYOUT 2400 // 自动布局的阀值
-#define THRESHOLD_FOR_AUTOLAYOUT 2400 // 自动布局的阀值
-
+		SLayoutSize THRESHOLD_FOR_AUTOLAYOUT; // 自动布局的阀值
+//#define THRESHOLD_FOR_AUTOLAYOUT 1024
         DECLARE_REOBJ(RichEditContent, L"RichEditContent")
 
     public:
 
-        RichEditContent() :_autoLayout(FALSE) {}
+        RichEditContent() :_autoLayout(FALSE) {
+			THRESHOLD_FOR_AUTOLAYOUT.parseString(L"1024dp");
+		}
         ~RichEditContent() {}
 
         virtual void  UpdatePosition();
@@ -385,9 +389,9 @@ namespace SOUI
             ATTR_STRINGW(L"type", _contentType, FALSE)
             ATTR_INT(L"auto-layout", _autoLayout, TRUE) /**< 是否自动布局,该设置会覆盖align属性*/
             ATTR_CUSTOM(L"timestamp", OnTimestampAttr)
-            SOUI_ATTRS_END()
+        SOUI_ATTRS_END()
 
-            SStringW    _contentType;
+        SStringW    _contentType;
         BOOL        _autoLayout;
         time_t      _timestamp;
     };
