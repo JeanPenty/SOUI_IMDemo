@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <include> 
-  <treeview size="-2,-2" name="tv_Friend" indent="0">
+  <treeview size="-2,-2" name="tv_Friend" indent="0" sbSkin="skin_vscroll" sbWid="5">
     <template >
       <item_group focusable="0" layout="vbox" colorSelected="#00000000" size="-2,36" margin="0,0,0,1" colorBorder="@color/color_line">
         <hr name="hr" height="1" width="-2" colorLine="#c9c7c6"/>

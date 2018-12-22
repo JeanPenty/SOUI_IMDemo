@@ -11,7 +11,7 @@
 #include "RichEditOleCtrls.h"
 #include "helper\SMenuEx.h"
 #include "gdialpha.h"
-#include "../extend.events/ExtendEvents.h"
+#include "../../extend.events/ExtendEvents.h"
 #include "ClipboardConverter.h"
 
 #ifndef LY_PER_INCH

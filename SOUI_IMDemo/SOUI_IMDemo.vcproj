@@ -274,6 +274,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\TreeViewAdapter.h"
+				>
+			</File>
+			<File
 				RelativePath=".\utils.h"
 				>
 			</File>
