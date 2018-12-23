@@ -163,7 +163,7 @@ namespace SOUI
 
         virtual BOOL CreateCaret(HBITMAP pBmp, int nWid, int nHeight);
         virtual void SetCaretPos(int x, int y);
-		virtual void OnScaleChanged(int nScale);
+
         //
         // internal helpers
         //
@@ -221,7 +221,7 @@ namespace SOUI
             MSG_WM_DESTROY(OnDestroy)
             MSG_WM_PAINT_EX(OnPaint)
             MSG_WM_SIZE(OnSize)
-            //MSG_WM_NCCALCSIZE(OnNcCalcSize)
+            MSG_WM_NCCALCSIZE(OnNcCalcSize)
             MSG_WM_LBUTTONDOWN(OnLButtonDown)
             MSG_WM_LBUTTONUP(OnLButtonUp)
             MSG_WM_RBUTTONDOWN(OnRButtonDown)

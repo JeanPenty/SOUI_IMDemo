@@ -143,9 +143,9 @@ namespace SOUI
         RichEditDropTarget(IRichEditObjHost *phost)
             :_ref(1)
             , _pHost(phost)
-        {           
-			SASSERT(_pHost);
-            _pserv = phost->GetTextServ();			
+        {
+            SASSERT(_pserv);
+            _pserv = phost->GetTextServ();
             _pserv->AddRef();
         }
 
@@ -993,15 +993,6 @@ namespace SOUI
         return SetCaretPos(x, y);
     }
 
-	void SImRichEdit::OnScaleChanged(int nScale)
-	{
-		__super::OnScaleChanged(nScale);
-
-		for (size_t n = 0; n < _richContents.GetCount(); ++n)
-		{
-			_richContents.GetAt(n)->UpdateScale(nScale);
-		}
-	}
     BOOL SImRichEdit::CanPaste()
     {
         RichFormatConv::ClipboardFmts fmts;
@@ -2129,7 +2120,7 @@ namespace SOUI
         }
 
         OnScroll(TRUE, SB_THUMBTRACK, nFinalPos);
-        //DrawScrollbar(TRUE, SB_THUMBPOSITION, nFinalPos);
+        DrawScrollbar(TRUE, SB_THUMBPOSITION, nFinalPos);
 
         return FALSE;
     }

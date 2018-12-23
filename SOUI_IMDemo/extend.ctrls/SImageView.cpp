@@ -1,17 +1,18 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "souistd.h"
 #include "SImageView.h"
 #include "../utils.h"
-#include "../extend.skins/SAntialiasSkin.h"
+#include "../extend.skins\SAntialiasSkin.h"
 
 namespace SOUI
 {
+
     SImageView::SImageView() :_pImageSkin(NULL),
         _currentFrame(0),
         _nextFrameInterval(0),
         _isPlaying(TRUE)
     {
-        _imageSize.cx = _imageSize.cy = 0; // Ä¬ÈÏÏÔÊ¾µÄÍ¼Æ¬´óÐ¡
+        _imageSize.cx = _imageSize.cy = 0; // é»˜è®¤æ˜¾ç¤ºçš„å›¾ç‰‡å¤§å°
     }
 
     SImageView::~SImageView()
@@ -30,7 +31,6 @@ namespace SOUI
 
         if (_pImageSkin)
         {
-			BYTE bytAlpha = _pImageSkin->GetAlpha();
             _pImageSkin->Draw(pRT, GetWindowRect(), _currentFrame);
 
             if (_isPlaying && _pImageSkin->GetStates() > 1)

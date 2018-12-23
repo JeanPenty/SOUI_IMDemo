@@ -242,6 +242,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\CommonFunction.h"
+				>
+			</File>
+			<File
 				RelativePath=".\GlobalUnits.h"
 				>
 			</File>

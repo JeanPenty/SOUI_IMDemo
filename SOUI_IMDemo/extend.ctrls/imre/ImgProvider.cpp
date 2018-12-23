@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "ImgProvider.h"
 #include <commctrl.inl>
 #include <Gdiplus.h>
@@ -164,7 +164,7 @@ BOOL ImageProvider::IsExist(LPCWSTR pszImageId)
     SSkinPool *pBuiltinSkinPool = SSkinPoolMgr::getSingletonPtr()->GetBuiltinSkinPool();
 
     //
-    // Èç¹ûÕâÀï²»ÏÈµ²Ò»°Ñ£¬ÏÂÃæµÄGetSkinÕÒ²»µ½skinÊ±»á¶ÏÑÔ´íÎó
+    // å¦‚æžœè¿™é‡Œä¸å…ˆæŒ¡ä¸€æŠŠï¼Œä¸‹é¢çš„GetSkinæ‰¾ä¸åˆ°skinæ—¶ä¼šæ–­è¨€é”™è¯¯
     //
     SkinKey key = { pszImageId,100 };
     if (!pBuiltinSkinPool->HasKey(key))
@@ -195,7 +195,7 @@ BOOL ImageProvider::Insert(LPCWSTR pszImageId, LPCWSTR pszImagePath, const LPREC
     pImg->LoadFromFile(pszImagePath);
 
     // load skin
-	SOUI::CRect rcMargin;
+    CRect rcMargin;
     if (lprcMargin)
         rcMargin = lprcMargin;
 
@@ -228,7 +228,7 @@ BOOL ImageProvider::Insert(LPCWSTR pszImageId, LPBYTE pData, size_t sizeLen, con
     pImg->LoadFromMemory(pData, sizeLen);
 
     // load skin
-	SOUI::CRect rcMargin;
+    CRect rcMargin;
     if (lprcMargin)
         rcMargin = lprcMargin;
 
@@ -337,7 +337,7 @@ void ImageProvider::Remove(LPCWSTR pszImageId)
     SSkinPool *pBuiltinSkinPool = SSkinPoolMgr::getSingletonPtr()->GetBuiltinSkinPool();
     ISkinObj *pSkin = pBuiltinSkinPool->GetSkin(pszImageId, 100);
 
-    if ((pSkin != NULL) && (pSkin->IsClass(SAntialiasSkin::GetClassName())))
+    if ((pSkin != NULL) && (pSkin->IsClass(SSkinImgFrame::GetClassName())))
     {
         SkinKey key = { pszImageId,100 };
         pBuiltinSkinPool->RemoveKeyObject(key);

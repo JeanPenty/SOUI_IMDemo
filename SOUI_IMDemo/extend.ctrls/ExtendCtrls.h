@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "core/SWnd.h"
 
 namespace SOUI
@@ -10,8 +10,8 @@ namespace SOUI
 
     protected:
         SOUI_MSG_MAP_BEGIN()
-            MSG_WM_LBUTTONDBLCLK(OnLButtonDown) //½«Ë«»÷ÏûÏ¢´¦ÀíÎªµ¥»÷
-        SOUI_MSG_MAP_END()
+            MSG_WM_LBUTTONDBLCLK(OnLButtonDown) //å°†åŒå‡»æ¶ˆæ¯å¤„ç†ä¸ºå•å‡»
+            SOUI_MSG_MAP_END()
     };
 
 };

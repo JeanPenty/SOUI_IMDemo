@@ -39,19 +39,20 @@ namespace SOUI
     // local helpers
     //
     // ------------------------------------------------------------------------------
-	float px2pt(int px)
-	{
-		static int dpi = 0;
-		if (!dpi)
-		{
-			HDC hDC = GetDC(NULL);
-			dpi = GetDeviceCaps(hDC, LOGPIXELSX);
-			ReleaseDC(NULL, hDC);
-		}
 
-		return px * 72 / (float)dpi;
-	}
-    
+    float px2pt(int px)
+    {
+        static int dpi = 0;
+        if (!dpi)
+        {
+            HDC hDC = GetDC(NULL);
+            dpi = GetDeviceCaps(hDC, LOGPIXELSX);
+            ReleaseDC(NULL, hDC);
+        }
+
+        return px * 72 / (float)dpi;
+    }
+
 
     //////////////////////////////////////////////////////////////////////////
     // IRichEditObj
@@ -66,7 +67,6 @@ namespace SOUI
         , _alignType(ALIGN_LEFT)
         , _references(1)
         , _cursorName(L"arrow")
-		, m_nScale(100)
     {
         _contentChr.cpMin = -1;
         _contentChr.cpMax = -1;
@@ -131,43 +131,7 @@ namespace SOUI
         _childrenCount = 0;
     }
 
-	void RichEditObj::UpdateScale(int nScale) {
-		if (nScale != m_nScale)
-		{
-			m_nScale = nScale;
-			_isDirty = TRUE; 			
-			for (RichEditObj * p = _pFirstChild; p != NULL; p = p->GetNext())
-			{
-				p->UpdateScale(m_nScale);
-			}
-		}
-	}
-
-	void RichEditObj::GetScaleSkin(ISkinObj *& pSkin, int nScale)
-	{
-		if (!pSkin) return;
-		SStringW strName = pSkin->GetName();
-		if (!strName.IsEmpty())
-		{
-			ISkinObj * pNewSkin = GETSKIN(strName, nScale);			
-			if (pNewSkin)
-			{
-				pSkin = pNewSkin;
-			}
-		}
-	}
-
-	CRect RichEditObj::GetMargin()
-	{
-		CRect rcRet;
-		rcRet.left = _marginRect[0].toPixelSize(m_nScale);
-		rcRet.top = _marginRect[1].toPixelSize(m_nScale);
-		rcRet.right = _marginRect[2].toPixelSize(m_nScale);
-		rcRet.bottom = _marginRect[3].toPixelSize(m_nScale);
-		return rcRet;
-	}
-
-	UINT RichEditObj::GetChildrenCount()
+    UINT RichEditObj::GetChildrenCount()
     {
         return _childrenCount;
     }
@@ -522,16 +486,16 @@ namespace SOUI
 
         _objRects.clear();
 
-		LRESULT lineStart = 0;
-		LRESULT lineEnd = 0;
+        int lineStart = 0;
+        int lineEnd = 0;
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMin, (LRESULT*)&lineStart);
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMax, (LRESULT*)&lineEnd);
 
         LONG chrIndex = _contentChr.cpMin;
         for (int lineIndex = lineStart; lineIndex <= lineEnd; ++lineIndex)
         {
-			LRESULT startCp = 0;
-			LRESULT lineLength = 0;
+            int startCp = 0;
+            int lineLength = 0;
 
             _pObjHost->SendMessage(EM_LINEINDEX, lineIndex, 0, (LRESULT*)&startCp);
             _pObjHost->SendMessage(EM_LINELENGTH, startCp, 0, (LRESULT*)&lineLength);
@@ -856,16 +820,7 @@ namespace SOUI
     {
     }
 
-	void RichEditBkElement::UpdateScale(int nScale)
-	{
-		__super::UpdateScale(nScale);
-
-		GetScaleSkin(_pLeftSkin, nScale);
-		GetScaleSkin(_pCenterSkin, nScale);
-		GetScaleSkin(_pRightSkin, nScale);
-	}
-
-	LRESULT RichEditBkElement::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
+    LRESULT RichEditBkElement::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
     {
         POINT pt = { GET_X_LPARAM(lParam), GET_Y_LPARAM(lParam) };
 
@@ -1078,7 +1033,7 @@ namespace SOUI
         return bRet && bRet2;
     }
 
-	int RichEditBkElement::PositionItem2Value(const POS_INFO &pos, int nMin, int nMax, BOOL bX)
+    int RichEditBkElement::PositionItem2Value(const POS_INFO &pos, int nMin, int nMax, BOOL bX)
     {
         int nRet = 0;
 
@@ -1086,9 +1041,9 @@ namespace SOUI
         {
         case PIT_NORMAL:
             if (pos.cMinus == -1)
-                nRet = nMax - (int)pos.nPos.toPixelSize(m_nScale);
+                nRet = nMax - (int)pos.nPos.fSize;
             else
-                nRet = nMin + (int)pos.nPos.toPixelSize(m_nScale);
+                nRet = nMin + (int)pos.nPos.fSize;
             break;
 
         case PIT_PREV_NEAR: //“[”相对于前一兄弟窗口。用于X时，参考前一兄弟窗口的right，用于Y时参考前一兄弟窗口的bottom
@@ -1109,12 +1064,12 @@ namespace SOUI
                 if (bX)
                 {
                     LONG refPos = (pos.pit == PIT_PREV_NEAR) ? rcRef.right : rcRef.left;
-                    nRet = refPos + (int)pos.nPos.toPixelSize(m_nScale)*pos.cMinus;
+                    nRet = refPos + (int)pos.nPos.fSize*pos.cMinus;
                 }
                 else
                 {
                     LONG refPos = (pos.pit == PIT_PREV_NEAR) ? rcRef.bottom : rcRef.top;
-                    nRet = refPos + (int)pos.nPos.toPixelSize(m_nScale)*pos.cMinus;
+                    nRet = refPos + (int)pos.nPos.fSize*pos.cMinus;
                 }
             }
             break;
@@ -1138,19 +1093,19 @@ namespace SOUI
                 if (bX)
                 {
                     LONG refPos = (pos.pit == PIT_NEXT_NEAR) ? rcRef.left : rcRef.right;
-                    nRet = refPos + (int)pos.nPos.toPixelSize(m_nScale)*pos.cMinus;
+                    nRet = refPos + (int)pos.nPos.fSize*pos.cMinus;
                 }
                 else
                 {
                     LONG refPos = (pos.pit == PIT_NEXT_NEAR) ? rcRef.top : rcRef.bottom;
-                    nRet = refPos + (int)pos.nPos.toPixelSize(m_nScale)*pos.cMinus;
+                    nRet = refPos + (int)pos.nPos.fSize*pos.cMinus;
                 }
             }
             break;
         }
 
         return nRet;
-    }//*/
+    }
 
     CRect RichEditBkElement::GetRect()
     {
@@ -1186,15 +1141,8 @@ namespace SOUI
     {
         _text = text;
     }
-	
-	void RichEditBkElement::SetSkin(ISkinObj* pSkin, BOOL bAutoFree /* = TRUE */)
-	{
-		_pLeftSkin = pSkin;
-		_pCenterSkin = pSkin;
-		_pRightSkin = pSkin;
-	}
 
-	void RichEditBkElement::CalcPosition(POS_INFO * pItemsPos, int nPosCount)
+    void RichEditBkElement::CalcPosition(POS_INFO * pItemsPos, int nPosCount)
     {
         if (!_bVisible || nPosCount == 0 || !_pObjHost)
         {
@@ -1212,7 +1160,7 @@ namespace SOUI
         // right
         if (pItemsPos[RIGHT].pit == PIT_SIZE)
         {
-            _objRect.right = _objRect.left + (LONG)pItemsPos[RIGHT].nPos.toPixelSize(m_nScale);
+            _objRect.right = _objRect.left + (LONG)pItemsPos[RIGHT].nPos.fSize;
         }
         else
         {
@@ -1222,7 +1170,7 @@ namespace SOUI
         // bottom
         if (pItemsPos[BOTTOM].pit == PIT_SIZE)
         {
-            _objRect.bottom = _objRect.top + (LONG)pItemsPos[BOTTOM].nPos.toPixelSize(m_nScale);
+            _objRect.bottom = _objRect.top + (LONG)pItemsPos[BOTTOM].nPos.fSize;
         }
         else
         {
@@ -1291,8 +1239,8 @@ namespace SOUI
     {
         rcLine.SetRectEmpty();
 
-		LRESULT ncpStart;
-		LRESULT nLength;
+        int ncpStart;
+        int nLength;
         _pObjHost->SendMessage(EM_LINEINDEX, nLineNo, 0, (LRESULT*)&ncpStart);
         _pObjHost->SendMessage(EM_LINELENGTH, ncpStart, 0, (LRESULT*)&nLength);
 
@@ -1324,16 +1272,10 @@ namespace SOUI
         return TRUE;
     }
 
-	void RichEditPara::UpdateScale(int nScale)
-	{
-		__super::UpdateScale(nScale);
-		_needUpdateLayout = TRUE;
-	}
-
-	BOOL RichEditPara::GetAutoWrapped()
+    BOOL RichEditPara::GetAutoWrapped()
     {
-		LRESULT lineStart = 0;
-		LRESULT lineEnd = 0;
+        int lineStart = 0;
+        int lineEnd = 0;
 
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMin, (LRESULT*)&lineStart);
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMax, (LRESULT*)&lineEnd);
@@ -1345,8 +1287,8 @@ namespace SOUI
     BOOL RichEditPara::CalculateRect()
     {
         CRect lineRect;
-		LRESULT lineStart = 0;
-		LRESULT lineEnd = 0;
+        int lineStart = 0;
+        int lineEnd = 0;
 
         _objRect.SetRectEmpty();
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMin, (LRESULT*)&lineStart);
@@ -1370,16 +1312,16 @@ namespace SOUI
         if (_autoWrapped)
         {
             CRect rcClient = _pObjHost->GetAdjustedRect();
-			CRect rcMargin = GetMargin();
+
             if (_alignType == RichEditObj::ALIGN_RIGHT)
             {
-                _objRect.right = rcClient.right - rcMargin.left;
-                _objRect.left = rcClient.left + rcMargin.right;
+                _objRect.right = rcClient.right - _marginRect.left;
+                _objRect.left = rcClient.left + _marginRect.right;
             }
             else
             {
-                _objRect.right = rcClient.right - rcMargin.right;
-                _objRect.left = rcClient.left + rcMargin.left;
+                _objRect.right = rcClient.right - _marginRect.right;
+                _objRect.left = rcClient.left + _marginRect.left;
             }
 
             return TRUE;
@@ -1428,8 +1370,8 @@ namespace SOUI
 
     BOOL RichEditPara::IsWrapped()
     {
-		LRESULT  nLineStart = 0;
-		LRESULT  nLineEnd = 0;
+        int  nLineStart = 0;
+        int  nLineEnd = 0;
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMin, (LRESULT*)&nLineStart);
         _pObjHost->SendMessage(EM_EXLINEFROMCHAR, 0, _contentChr.cpMax, (LRESULT*)&nLineEnd);
 
@@ -1493,14 +1435,11 @@ namespace SOUI
         pdoc->Range(chr.cpMin, chr.cpMax, &prange);
         prange->GetPara(&ppara);
 
-		CRect rcMargin = GetMargin();
-
         if (!_initialized)
         {
             _initialized = TRUE;
-
-			ppara->SetSpaceBefore(px2pt(rcMargin.top));
-			ppara->SetSpaceAfter(px2pt(rcMargin.bottom));
+            ppara->SetSpaceBefore(px2pt(_marginRect.top));
+            ppara->SetSpaceAfter(px2pt(_marginRect.bottom));
 
             int nAlign = tomAlignLeft;
 
@@ -1516,8 +1455,8 @@ namespace SOUI
         }
 
         CRect rcAdjust = _pObjHost->GetAdjustedRect();
-        int nLeftIndents = _alignType == ALIGN_RIGHT ? rcMargin.right : rcMargin.left;
-        int nRightIndents = _alignType == ALIGN_RIGHT ? rcMargin.left : rcMargin.right;
+        int nLeftIndents = _alignType == ALIGN_RIGHT ? _marginRect.right : _marginRect.left;
+        int nRightIndents = _alignType == ALIGN_RIGHT ? _marginRect.left : _marginRect.right;
 
         _autoWrapped = FALSE;
 
@@ -1566,8 +1505,8 @@ namespace SOUI
         else
         {
             int mid = (rcAdjust.Width() - _objRect.Width() - nRightIndents - nLeftIndents) / 2 - 1;
-            nLeftIndents = rcMargin.left + mid;
-            nRightIndents = rcMargin.right + mid;
+            nLeftIndents = _marginRect.left + mid;
+            nRightIndents = _marginRect.right + mid;
         }
 
         // step 4
@@ -1585,11 +1524,10 @@ namespace SOUI
         _objRect.SetRect(0, 0, 0, 0);
 
         CRect rcHost = _pObjHost->GetAdjustedRect();
+        AlignType type = rcHost.Width() > THRESHOLD_FOR_AUTOLAYOUT ? ALIGN_LEFT : ALIGN_RIGHT;
 
         if (_autoLayout)
         {
-			AlignType type = rcHost.Width() > THRESHOLD_FOR_AUTOLAYOUT.toPixelSize(m_nScale) ? ALIGN_LEFT : ALIGN_RIGHT;
-			//AlignType type = rcHost.Width() > THRESHOLD_FOR_AUTOLAYOUT ? ALIGN_LEFT : ALIGN_RIGHT;
             SetAlign(type);
         }
 

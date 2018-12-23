@@ -7,7 +7,7 @@
         <text extend_left="12" weight="1" size="-2,0" align="bottom" name="name" text="新朋友"/>        
       </item_group>
       <item_data size="-2,60" layout="hbox" gravity="center" colorHover="#dddbda" colorSelected="#c9c7c6">
-        <img extend_left="12" skin="skin_default_logo32p"/>
+        <img extend_left="12" name="face" skin="skin_personal"/>
         <text extend_left="12" name="name" text="新朋友"/>
       </item_data>
     </template>
