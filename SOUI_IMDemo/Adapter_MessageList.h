@@ -18,7 +18,13 @@ struct MessageListItemData
 class CAdapter_MessageList : public SAdapterBase
 {
 public:
-	CAdapter_MessageList(SListView* pOwner, IAdapterLasttalk_Callback* pCB);
+	struct IListener
+	{
+		virtual void MessageListItemClick(int nType, const std::string& strID) = 0;
+		virtual void MessageListItemRClick(int nType, const std::string& strID) = 0;
+	};
+public:
+	CAdapter_MessageList(SListView* pOwner, IListener* pListener);
 	~CAdapter_MessageList(void);
 
 public:
@@ -38,6 +44,7 @@ private:
 	SListView*						  m_pOwner;
 
 	IAdapterLasttalk_Callback*        m_pCB;
+	IListener*							m_pListener;
 
 	MemberFunctionSlot<CAdapter_MessageList, EventArgs>			m_evtItemClick;
 	MemberFunctionSlot<CAdapter_MessageList, EventArgs>			m_evtItemRClick;

@@ -1,9 +1,9 @@
 #include "StdAfx.h"
 #include "Adapter_MessageList.h"
 
-CAdapter_MessageList::CAdapter_MessageList(SListView* pOwner, IAdapterLasttalk_Callback* pCB)
+CAdapter_MessageList::CAdapter_MessageList(SListView* pOwner, IListener* pListener)
 : m_pOwner(pOwner)
-, m_pCB(pCB)
+, m_pListener(pListener)
 , m_evtItemClick(&CAdapter_MessageList::OnEventItemPanelClick, this)
 , m_evtItemRClick(&CAdapter_MessageList::OnEventItemPanelRClick, this)
 {
@@ -134,7 +134,7 @@ bool CAdapter_MessageList::OnEventItemPanelClick(EventArgs* e)
 	MessageListItemData* pInfo = m_vecItemInfo[nItem];
 	if (NULL != pInfo)
 	{
-		m_pCB->OnLasttalkListItemClick(pInfo->nType, pInfo->strID);
+		m_pListener->MessageListItemClick(pInfo->nType, pInfo->strID);
 	}
 
 	return true;
@@ -152,7 +152,7 @@ bool CAdapter_MessageList::OnEventItemPanelRClick(EventArgs* e)
 	MessageListItemData* pInfo = m_vecItemInfo[nItem];
 	if (NULL != pInfo)
 	{
-		m_pCB->OnLasttalkListItemRClick(pInfo->nType, pInfo->strID);
+		m_pListener->MessageListItemRClick(pInfo->nType, pInfo->strID);
 	}
 
 	return true;
