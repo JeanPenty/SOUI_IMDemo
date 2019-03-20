@@ -44,4 +44,13 @@
     <imgframe name="skin_menu_sep" src="PNG:IDB_PNG_MENUSEP" />
     <imgframe name="skin_menu_itembkg" src="PNG:IDB_PNG_MENUITEMSKIN" />
     <imgframe name="skin_menu_check" src="PNG:IDB_PNG_MENUCHECK" />
+
+    <imgframe name="skin_left_bubble" src="PNG:IDB_PNG_LEFTBUBBLE" left="10" top="28" right="5" bottom="10"/>
+    <imgframe name="skin_right_bubble" src="PNG:IDB_PNG_RIGHTBUBBLE" left="10" top="28" right="10" bottom="10"/>
+    <imgframe name="skin_right_otherbubble" src="PNG:IDB_PNG_RIGHTOTHERBUBBLE" left="10" top="28" right="10" bottom="5" />
+    <imgframe name="skin_default_bg" src="PNG:IDB_PNG_DEFAULTBG" />
+    <imgframe name="skin.fetch_more_msg" src="PNG:IDB_PNG_RICHEDIT_MOREMSG" />
+    <antialias name="skin.richedit.loading" src="PNG:IDB_PNG_RICHEDIT_MORELOADING" />
+    <imgframe name="skin.richedit_resend" src="PNG:IDB_PNG_RICHEDIT_RESEND" />
+    <imgframe name="skin.rich_sysmsg_bk" src="PNG:ID_RICH_SYSMSG_BK" left="9" top="9" right="9" bottom="9"/>
 	</skin>

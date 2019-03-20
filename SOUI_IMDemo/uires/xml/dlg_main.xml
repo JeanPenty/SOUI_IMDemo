@@ -60,7 +60,7 @@
               font="face:微软雅黑,size:16,adding:1">SOUI个人好友名</text>
         <imgbtn name="btn_more" pos="-40,{0" skin="skin_more" cursor="hand" />
         <!--聊天窗口右侧子窗口布局测试  begin-->
-        <tabctrl pos="0,[2,-0,-0" name="chattab" tabHeight="0" colorBkgnd="rgb(230,234,238)">
+        <tabctrl pos="0,[2,-0,-0" name="chattab" tabHeight="0" colorBkgnd="rgb(250,250,250)">
           <page title="select_none">
             <caption pos="0,0,-0,-0" colorBkgnd="rgb(230,234,238)">
               <img pos="|-24,|-100" skin="skin_default_logo48p" />

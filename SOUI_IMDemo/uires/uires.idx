@@ -77,11 +77,18 @@
 
     <!--菜单相关资源-->
     <file name="IDB_PNG_MENUSKIN" path="image\menu\menu_skin.png" />
-    <!--菜单背景图片资源-->
     <file name="IDB_PNG_MENUSEP" path="image\menu\menu_sep.png" />
-    <!--菜单分割线图片资源-->
     <file name="IDB_PNG_MENUITEMSKIN" path="image\menu\menu_itemskin.png" />
     <file name="IDB_PNG_MENUCHECK" path="image\menu\menu_check.png" />
+
+    <file name="IDB_PNG_LEFTBUBBLE" path="image\chat\left_bubble.png" />
+    <file name="IDB_PNG_RIGHTBUBBLE" path="image\chat\right_bubble.png" />
+    <file name="IDB_PNG_RIGHTOTHERBUBBLE" path="image\chat\right_other_bubble.png" />
+    <file name="IDB_PNG_DEFAULTBG" path="image\chat\default_bg.png" />
+    <file name="IDB_PNG_RICHEDIT_MOREMSG" path="image\chat\richedit_more.png" />
+    <file name="IDB_PNG_RICHEDIT_MORELOADING" path="image\chat\richedit_moreloading.gif" />
+    <file name="IDB_PNG_RICHEDIT_RESEND" path="image\chat\richedit_resend.png" />
+    <file name="ID_RICH_SYSMSG_BK" path="image\chat\aio_sys_bg.png"/>
   </PNG>
   <ICON>
     <file name="ICON_LOGO"  path="image\soui.ico"/>
