@@ -1,0 +1,12 @@
+<root>
+  <window pos="0,0,-0,-0" skin="skin.empty">
+    <window name="video_frame" pos="0,0,-0,-0">
+      <img name="video_cover_img" pos="0,0,-0,-0" />
+    </window>
+    <image name="play" pos="|-20,|-20" cursor="hand" />
+    <image name="loading" pos="|-20,|-20" />
+    <window name="durationWnd" pos="0,-20,-0,-0" skin="skin.richvideo_timebg">
+      <text name="video_duration" pos="-40,3,@40,@13" align="center" colorText="#FFFFFF" font="size:12" />
+    </window>
+  </window>
+</root>

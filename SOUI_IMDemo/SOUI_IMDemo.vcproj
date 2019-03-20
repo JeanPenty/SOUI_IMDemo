@@ -246,6 +246,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\FileHelper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\GlobalUnits.h"
 				>
 			</File>
@@ -395,6 +399,50 @@
 					/>
 				</FileConfiguration>
 			</File>
+			<Filter
+				Name="richeditoles"
+				>
+				<File
+					RelativePath=".\uires\xml\richeditole\audioole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\fetchmoreole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\fileole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\imageole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\linkole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\locationole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\MetaFileOle.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\remainderole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\splitlineole.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\richeditole\videoole.xml"
+					>
+				</File>
+			</Filter>
 		</Filter>
 		<Filter
 			Name="extend.ctrls"

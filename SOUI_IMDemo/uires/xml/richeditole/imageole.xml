@@ -1,0 +1,8 @@
+<root>
+  <window pos="0,0,-0,-0">
+    <image name="player" cursor="hand" pos="0,0,-0,-0"/>
+    <!--
+    <imgbtn name="BtnManifier" skin="skin.tabbtn_close" pos="-18,-18,@16,@16" />
+    -->
+  </window>
+</root>

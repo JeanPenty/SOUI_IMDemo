@@ -1,0 +1,16 @@
+<root>
+  <window pos="0,0,-0,-0" skin="skin.empty">
+    <window name="left_audio" pos="0,0,-0,-0">
+      <image name="play" cursor="hand" pos="0,0"/>
+      <image name="playing" cursor="hand" pos="0,0" />
+      <image name="isplayed" pos="[5,15" skin="skin.richaudio_reddot" show="1" />
+      <text name="audio_duration" pos="{0,22" align="left" colorText="#000000" dotted="1" font="size:12"/>
+    </window>
+    <window name="right_audio" pos="0,0,-0,-0">
+      <image name="play" cursor="hand" pos="20,0"/>
+      <image name="playing" cursor="hand" pos="20,0" />
+      <image name="isplayed" pos="{-20,15" skin="skin.richaudio_reddot" show="1" />
+      <text name="audio_duration" pos="{0,22" align="left" colorText="#000000" dotted="1" font="size:12"/>
+    </window>
+  </window>
+</root>

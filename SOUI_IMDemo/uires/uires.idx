@@ -12,6 +12,22 @@
     <file name="XML_PAGE_COMMON_PERSONAL" path="xml\page_common_personal.xml"/>
     <file name="XML_PAGE_COMMON_GROUP" path="xml\page_common_group.xml"/>
     <file name="XML_PAGE_COMMON_FILEHELPER" path="xml\page_common_filehelper.xml"/>
+
+    <!--RichEditOLE元素相关的布局-->
+    <file name="FileOleLayout" path="xml\richeditole\fileole.xml" />
+    <!--文件OLE-->
+    <file name="SeperatorOleLayout" path="xml\richeditole\splitlineole.xml" />
+    <!--分割线OLE-->
+    <file name="ImageOleLayout" path="xml\richeditole\imageole.xml" />
+    <!--图片OLE-->
+    <file name="FetchMoreOleLayout" path="xml\richeditole\fetchmoreole.xml" />
+    <!--更多消息OLE-->
+    <file name="RemainderOleLayout" path="xml\richeditole\remainderole.xml" />
+    <file name="MetaFileOleLayout" path="xml\richeditole\MetaFileOle.xml" />
+    <file name="AudioOleLayout" path="xml\richeditole\audioole.xml" />
+    <file name="VideoOleLayout" path="xml\richeditole\videoole.xml" />
+    <file name="LocationOleLayout" path="xml\richeditole\locationole.xml" />
+    <file name="LinkOleLayout" path="xml\richeditole\linkole.xml" />
   </LAYOUT>
   
   <values>

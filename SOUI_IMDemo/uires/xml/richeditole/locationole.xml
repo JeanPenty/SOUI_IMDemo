@@ -1,0 +1,7 @@
+<root>
+  <window name="locationwnd" pos="0,0,-0,-0" cursor="hand" >
+    <text name="location_title" cursor="hand" pos="5,0,@230,@15" dotted="1" align="left" colorText="#000000" font="size:14" />
+    <text name="location_address" cursor="hand" pos="5,[5,@230,@13" dotted="1" align="left" colorText="#7F7F7F" font="size:12" />
+    <img name="location_img" pos="5,[10,-0,-0" cursor="hand"/>
+  </window>
+</root>

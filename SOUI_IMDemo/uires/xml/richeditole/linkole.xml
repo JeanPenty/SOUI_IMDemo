@@ -1,0 +1,15 @@
+<root>
+  <window name="LinkWnd" cursor="hand" pos="0,0,-0,-0" skin="skin.empty">
+    <text name="link_title" dotted="1" pos="10,10,-0,@12" align="left" colorText="#333333" font="size:12"/>
+    <text name="link_content" 
+          pos="10,[15,-47,-5" 
+          align="left" 
+          valign="top"
+          dotted="1" 
+          textMode="8208"
+          colorText="#7F7F7F" 
+          font="size:10"
+          interHeight="-3"/>
+    <img name="link_image" pos="-42,-42" />
+  </window>
+</root>
