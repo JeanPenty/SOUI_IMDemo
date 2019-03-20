@@ -74,11 +74,20 @@
     <file name="IDB_PNG_SNAPSHOT_ARROW" path="image\snapshot_arrow.png" />
     <file name="IDB_PNG_HISTORY" path="image\history.png" />
     <file name="IDB_PNG_SEND" path="image\send.png" />
+
+    <!--菜单相关资源-->
+    <file name="IDB_PNG_MENUSKIN" path="image\menu\menu_skin.png" />
+    <!--菜单背景图片资源-->
+    <file name="IDB_PNG_MENUSEP" path="image\menu\menu_sep.png" />
+    <!--菜单分割线图片资源-->
+    <file name="IDB_PNG_MENUITEMSKIN" path="image\menu\menu_itemskin.png" />
+    <file name="IDB_PNG_MENUCHECK" path="image\menu\menu_check.png" />
   </PNG>
   <ICON>
     <file name="ICON_LOGO"  path="image\soui.ico"/>
   </ICON>
   <SMENU>
     <file name="menu_tray" path="xml\menu_tray.xml"/>
+    <file name="menu_snapshot_arrow" path="xml\menus\menu_snapshot_arrow.xml" />
   </SMENU>
 </resource>

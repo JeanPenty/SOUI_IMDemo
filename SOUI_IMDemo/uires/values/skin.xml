@@ -38,4 +38,10 @@
     <imglist name="skin_snapshot_arrow" src="PNG:IDB_PNG_SNAPSHOT_ARROW" states="3" />
     <imglist name="skin_history" src="PNG:IDB_PNG_HISTORY" states="3" />
     <imglist name="skin_send" src="PNG:IDB_PNG_SEND" states="4" />
+
+    <!--菜单相关资源-->
+    <imgframe name="skin_menu_bkg" src="PNG:IDB_PNG_MENUSKIN" left="8" top="4" right="8" bottom="12"/>
+    <imgframe name="skin_menu_sep" src="PNG:IDB_PNG_MENUSEP" />
+    <imgframe name="skin_menu_itembkg" src="PNG:IDB_PNG_MENUITEMSKIN" />
+    <imgframe name="skin_menu_check" src="PNG:IDB_PNG_MENUCHECK" />
 	</skin>

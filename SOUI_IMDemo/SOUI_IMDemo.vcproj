@@ -193,6 +193,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MenuWrapper.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\SOUI_IMDemo.cpp"
 				>
 			</File>
@@ -262,6 +266,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MenuWrapper.h"
+				>
+			</File>
+			<File
 				RelativePath=".\public.h"
 				>
 			</File>
@@ -317,6 +325,10 @@
 			</File>
 			<File
 				RelativePath=".\uires\uidef\init.xml"
+				>
+			</File>
+			<File
+				RelativePath=".\uires\xml\menus\menu_snapshot_arrow.xml"
 				>
 			</File>
 			<File
