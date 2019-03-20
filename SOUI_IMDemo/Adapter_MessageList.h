@@ -6,7 +6,6 @@
 #include <vector>
 
 #include "GlobalUnits.h"
-#include "IAdapterCallback.h"
 
 
 struct MessageListItemData
@@ -43,7 +42,7 @@ private:
 	std::vector<MessageListItemData*> m_vecItemInfo;
 	SListView*						  m_pOwner;
 
-	IAdapterLasttalk_Callback*        m_pCB;
+	//IAdapterLasttalk_Callback*        m_pCB;
 	IListener*							m_pListener;
 
 	MemberFunctionSlot<CAdapter_MessageList, EventArgs>			m_evtItemClick;
