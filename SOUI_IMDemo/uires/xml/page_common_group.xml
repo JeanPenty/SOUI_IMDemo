@@ -4,7 +4,7 @@
     <imrichedit name="recv_richedit"
                 pos="10,[1,-10,-1"
                 bkgndBlend="1"
-                colorBkgnd="rgb(250,250,250)"
+                colorBkgnd="rgb(255,255,255)"
                 enableDragdrop="1"
                 readOnly="1"
                 autoSel="0"
@@ -38,7 +38,7 @@
                 autoVscroll="1"
                 hscrollBar="0"
                 wantReturn="1"
-                colorBkgnd="rgb(250,250,250)"
+                colorBkgnd="rgb(255,255,255)"
                 inset="0,0,8,0"
                 sbskin="skin_vscroll"/>
     <imgbtn name="btn_send" pos="-70,[0" skin="skin_send" font="face:微软雅黑,size:12" text="发送" align="center" valign="center" cursor="hand"/>

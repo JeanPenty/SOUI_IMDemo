@@ -89,6 +89,11 @@
     <file name="IDB_PNG_RICHEDIT_MORELOADING" path="image\chat\richedit_moreloading.gif" />
     <file name="IDB_PNG_RICHEDIT_RESEND" path="image\chat\richedit_resend.png" />
     <file name="ID_RICH_SYSMSG_BK" path="image\chat\aio_sys_bg.png"/>
+
+    <!--文件ole相关资源-->
+    <file name="ID_EMPTY" path="image\chat\empty.png"/>
+    <file name="ID_RICH_FILE_BK" path="image\chat\richframe_bkg_no_spliter.png"/>
+    <file name="ID_FILE_ICON_TEXT" path="image\chat\text.png"/>
   </PNG>
   <ICON>
     <file name="ICON_LOGO"  path="image\soui.ico"/>

@@ -53,4 +53,8 @@
     <antialias name="skin.richedit.loading" src="PNG:IDB_PNG_RICHEDIT_MORELOADING" />
     <imgframe name="skin.richedit_resend" src="PNG:IDB_PNG_RICHEDIT_RESEND" />
     <imgframe name="skin.rich_sysmsg_bk" src="PNG:ID_RICH_SYSMSG_BK" left="9" top="9" right="9" bottom="9"/>
+
+    <imgframe name="skin.rich_file_bk" src="PNG:ID_RICH_FILE_BK" left="14" top="20" right="14" bottom="20"/>
+    <imgframe name="skin.file_icon_text" src="PNG:ID_FILE_ICON_TEXT" />
+    <imgframe name="skin.empty"	src="PNG:ID_EMPTY"/>
 	</skin>

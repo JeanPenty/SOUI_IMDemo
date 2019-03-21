@@ -258,10 +258,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\IAdapterCallback.h"
-				>
-			</File>
-			<File
 				RelativePath=".\MainDlg.h"
 				>
 			</File>

@@ -11,6 +11,7 @@
     <class name="normalbtn" font="" colorText="#385e8b" colorTextDisable="#91a7c0" textMode="0x25" cursor="hand" margin-x="0"/>
     <class name="cls_btn_weblink" cursor="hand" colorText="#1e78d5" colorTextHover="#1e78d5" font="italic:1" fontHover="underline:1,italic:1" />
     <class name="cls_edit" ncSkin="_skin.sys.border" margin-x="1" margin-y="1" />
+    <class name="cls_rich_link" cursor="hand" font="size:12" fontPush="underline:1,size:12" fontHover="underline:1,size:12" colorText="#1670eb" colorHover="#1670eb"/>
   </style>
 
   <objattr>

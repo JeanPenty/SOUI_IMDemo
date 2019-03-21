@@ -136,66 +136,78 @@ namespace SOUI
     // RichEditFileOle
     //
     // ------------------------------------------------------------------------------
-    extern "C" const GUID IID_FileOleCtrl;
+	extern "C" const GUID IID_FileOleCtrl;
 
-    class RichEditFileOle : public RichEditOleBase
-    {
-        DECLARE_REOBJ(RichEditFileOle, L"file")
+	class RichEditFileOle : public RichEditOleBase
+	{
+		DECLARE_REOBJ(RichEditFileOle, L"file")
 
-    public:
+	public:
 
-        enum LinkFlag
-        {
-            LINK_SAVE = 0x0001,   // 淇濆瓨鎸夐挳
-            LINK_SAVEAS = 0x0002,   // 鍙﹀瓨涓烘寜閽?
-            LINK_CANCEL = 0x0004,   // 鍙栨秷浼犺緭鎸夐挳
-            LINK_OPEN_FILE = 0x0008,   // 鎵撳紑鏂囦欢鎸夐挳
-            LINK_OPEN_DIR = 0x0010,   // 鎵撳紑鏂囦欢鎵�鍦ㄦ枃浠跺す鎸夐挳
-            LINK_CONTINUE = 0x0020,   // 缁х画浼犺緭鎸夐挳
-            LINK_FORWARD = 0x0040,   //  杞彂
-        };
+		enum LinkFlag
+		{
+			LINK_DOWNLOAD = 0x0001,	//下载
+			LINK_SAVE = 0x0002,   // 保存按钮
+			LINK_SAVEAS = 0x0004,   // 另存为按钮
+			LINK_CANCEL = 0x0008,   // 取消传输按钮
+			LINK_OPEN_FILE = 0x0010,   // 打开文件按钮
+			LINK_OPEN_DIR = 0x0020,   // 打开文件所在文件夹按钮
+			LINK_CONTINUE = 0x0040,   // 继续传输按钮
+			LINK_FORWARD = 0x0080,   //  转发
+		};
 
-        static SStringW MakeFormattedText(
-            const SStringW& filePath,
-            const SStringW& fileState,
-            __int64 fileSize,
-            int visibleLinks);
+		static SStringW MakeFormattedText(
+			const SStringW& filePath,
+			const SStringW& fileState,
+			__int64 fileSize,
+			int visibleLinks,
+			const SStringW& fileSuffix);
 
-        RichEditFileOle();
-        ~RichEditFileOle();
+		RichEditFileOle();
+		~RichEditFileOle();
 
-        virtual BOOL InitOleWindow(IRichEditObjHost* pHost);
+		virtual BOOL InitOleWindow(IRichEditObjHost* pHost);
 
-        void SetFilePath(const SStringW& path);
-        void SetFileLinksVisible(int links);
-        void SetFileSize(__int64 size, BOOL requestLayout = TRUE);
-        void SetFileStateString(const SStringW& str);
-        SStringW GetFilePath();
-        SStringW GetFileName();
-        __int64 GetFileSize();
+		void SetFilePath(const SStringW& path);
+		void SetFileLinksVisible(int links);
+		void SetFileSize(__int64 size, BOOL requestLayout = TRUE);
+		void SetFileStateString(const SStringW& str);
+		SStringW GetFilePath();
+		SStringW GetFileName();
+		__int64 GetFileSize();
+		SStringW GetFileSuffix();
+		void SetFileSuffix(const SStringW& suffix);
+		void SetFileUrl(const SStringW& url);
+		SStringW GetFileUrl();
+		SStringW GetFileOLeId(){return GetId();}
 
-    protected:
+	protected:
 
-        bool OnLinkClicked(SOUI::EventArgs *pEvt);
+		bool OnLinkClicked(SOUI::EventArgs *pEvt);
+		bool OnFileNameClicked(SOUI::EventArgs* pEvt);
 
-        SOUI_ATTRS_BEGIN()
-            ATTR_STRINGW(L"file-path", _filePath, FALSE)
-            ATTR_STRINGW(L"file-size", _fileSize, FALSE)
-            ATTR_STRINGW(L"file-state", _fileState, FALSE)
-            ATTR_INT(L"links", _links, FALSE)
-            SOUI_ATTRS_END()
+		SOUI_ATTRS_BEGIN()
+			ATTR_STRINGW(L"file-path", _filePath, FALSE)
+			ATTR_STRINGW(L"file-size", _fileSize, FALSE)
+			ATTR_STRINGW(L"file-state", _fileState, FALSE)
+			ATTR_INT(L"links", _links, FALSE)
+			ATTR_STRINGW(L"file-suffix", _fileSuffix, FALSE)
+			ATTR_STRINGW(L"file-url", _fileUrl, FALSE)
+			SOUI_ATTRS_END()
 
-            SStringW GetSizeBeautyString(unsigned long long size);
+			SStringW GetSizeBeautyString(unsigned long long size);
 
-    private:
+	private:
 
-        SStringW _filePath;         // 鏂囦欢璺緞
-        SStringW _fileName;         // 鏂囦欢鍚?
-        SStringW _fileSize;         // 鏂囦欢灏哄
-        SStringW _fileState;        // 鏂囦欢鐘舵�?
-        __int64  _fileSizeBytes;    // 鏁村舰鐨勬枃浠跺ぇ灏?
-        int      _links;            // 鍙鎸夐挳鐨勬爣璁帮紝瑙丩inkFlag
-    };
+		SStringW _filePath;         // 文件路径
+		SStringW _fileName;         // 文件名
+		SStringW _fileSize;         // 文件尺寸
+		SStringW _fileState;        // 文件状态
+		__int64  _fileSizeBytes;    // 整形的文件大小
+		int      _links;            // 可见按钮的标记，见LinkFlag
+		SStringW _fileSuffix;
+		SStringW _fileUrl;
+	};
 
     //
     // RichEditFileOle inlines

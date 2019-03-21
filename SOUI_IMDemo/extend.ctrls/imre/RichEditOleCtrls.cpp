@@ -443,240 +443,282 @@ namespace SOUI
     static const GUID IID_FileOleCtrl =
     { 0xe0ed3fc5, 0x1645, 0x4b7f, { 0xa0, 0xe2, 0x86, 0xf5, 0x28, 0x8f, 0x40, 0x7b } };
 
-    RichEditFileOle::RichEditFileOle()
-    {
-        _oleGuid = IID_FileOleCtrl;
-        _sizeNatural.cx = 295;
-        _sizeNatural.cy = 95;
-        _xmlLayout = L"LAYOUT:FileOleLayout";
-    }
+	RichEditFileOle::RichEditFileOle()
+	{
+		_oleGuid = IID_FileOleCtrl;
+		_sizeNatural.cx = 300;
+		_sizeNatural.cy = 95;
+		_canBeSelect = FALSE;
+		_xmlLayout = L"LAYOUT:FileOleLayout";
+	}
 
-    RichEditFileOle::~RichEditFileOle()
-    {
-    }
+	RichEditFileOle::~RichEditFileOle()
+	{
+	}
 
-    SStringW RichEditFileOle::MakeFormattedText(
-        const SStringW& filePath,
-        const SStringW& fileState,
-        __int64 fileSize,
-        int visibleLinks)
-    {
-        SStringW formattedText;
+	SStringW RichEditFileOle::MakeFormattedText(
+		const SStringW& filePath,
+		const SStringW& fileState,
+		__int64 fileSize,
+		int visibleLinks, 
+		const SStringW& fileSuffix)
+	{
+		SStringW formattedText;
 
-        formattedText.Format(L"<file selectable=\"0\" file-path=\"%s\" file-size=\"%I64d\" file-state=\"%s\" links=\"%d\" />",
-            filePath,       // file-path
-            fileSize,       // file-size
-            fileState,      // file-state
-            visibleLinks);  // links
+		formattedText.Format(L"<file selectable=\"0\" file-path=\"%s\" file-size=\"%I64d\" file-state=\"%s\" links=\"%d\" file-suffix=\"%s\" />",
+			filePath,       // file-path
+			fileSize,       // file-size
+			fileState,      // file-state
+			visibleLinks,	// links
+			fileSuffix);  
 
-        return formattedText;
-    }
+		return formattedText;
+	}
 
-    //LRESULT RichEditFileOle::ProcessMessage(UINT msg, WPARAM wParam, LPARAM lParam, BOOL& bHandled)
-    //{
-    //    RichEditOleBase::ProcessMessage(msg, wParam, lParam, bHandled);
-    //    if (msg == WM_LBUTTONDOWN || msg == WM_LBUTTONDBLCLK)
-    //    {
-    //        bHandled = TRUE; // 文件OLE不让RichEdit继续左击，否则会画出一个黑框
-    //    }
-    //    return 0;
-    //}
+	bool RichEditFileOle::OnFileNameClicked(SOUI::EventArgs* pEvt)
+	{
+		int linkFlag = LINK_OPEN_FILE;
+		_pObjHost->NotifyRichObjEvent(this, CLICK_FILEOLE, linkFlag, (LPARAM)(LPCWSTR)_filePath);
+		return true;
+	}
 
-    bool RichEditFileOle::OnLinkClicked(SOUI::EventArgs *pEvt)
-    {
-        int linkFlag = 0;
+	bool RichEditFileOle::OnLinkClicked(SOUI::EventArgs *pEvt)
+	{
+		int linkFlag = 0;
 
-        SStringW linkName = pEvt->sender->GetName();
-        if (linkName == _T("LnkSaveFile"))
-        {
-            linkFlag = LINK_SAVE;
-        }
-        else if (linkName == _T("LnkSaveFileAs"))
-        {
-            linkFlag = LINK_SAVEAS;
-        }
-        else if (linkName == _T("LnkCancelFile"))
-        {
-            linkFlag = LINK_CANCEL;
-        }
-        else if (linkName == _T("LnkOpenFile"))
-        {
-            linkFlag = LINK_OPEN_FILE;
-        }
-        else if (linkName == _T("LnkOpenFileDir"))
-        {
-            linkFlag = LINK_OPEN_DIR;
-        }
-        else if (linkName == _T("LnkContinueFile"))
-        {
-            linkFlag = LINK_CONTINUE;
-        }
-        else if (linkName == _T("LnkForwardFile"))
-        {
-            linkFlag = LINK_FORWARD;
-        }
+		SStringW linkName = pEvt->sender->GetName();
+		if (linkName == _T("LnkSaveFile"))
+		{
+			linkFlag = LINK_SAVE;
+		}
+		else if (linkName == _T("LnkSaveFileAs"))
+		{
+			linkFlag = LINK_SAVEAS;
+		}
+		else if (linkName == _T("LnkCancelFile"))
+		{
+			linkFlag = LINK_CANCEL;
+		}
+		else if (linkName == _T("LnkOpenFile"))
+		{
+			linkFlag = LINK_OPEN_FILE;
+		}
+		else if (linkName == _T("LnkOpenFileDir"))
+		{
+			linkFlag = LINK_OPEN_DIR;
+		}
+		else if (linkName == _T("LnkContinueFile"))
+		{
+			linkFlag = LINK_CONTINUE;
+		}
+		else if (linkName == _T("LnkForwardFile"))
+		{
+			linkFlag = LINK_FORWARD;
+		}
+		else if (linkName == _T("LnkDownLoad"))
+		{
+			linkFlag = LINK_DOWNLOAD;
+		}
 
-        _pObjHost->NotifyRichObjEvent(this, CLICK_FILEOLE, linkFlag, (LPARAM)(LPCWSTR)_filePath);
-        return true;
-    }
+		_pObjHost->NotifyRichObjEvent(this, CLICK_FILEOLE, linkFlag, (LPARAM)(LPCWSTR)_filePath);
+		return true;
+	}
 
-    SStringW RichEditFileOle::GetSizeBeautyString(unsigned long long size)
-    {
-        const TCHAR* pLevelTable[] = { _T("B"), _T("KB"), _T("MB"), _T("GB") };
+	SStringW RichEditFileOle::GetSizeBeautyString(unsigned long long size)
+	{
+		const TCHAR* pLevelTable[] = { _T("B"), _T("KB"), _T("MB"), _T("GB") };
 
-        int level = 0;
-        long double fSize = (long double)size;
-        for (; fSize > 1024.0f; ++level)
-        {
-            fSize /= 1024.0f;
-        }
+		int level = 0;
+		long double fSize = (long double)size;
+		for (; fSize > 1024.0f; ++level)
+		{
+			fSize /= 1024.0f;
+		}
 
-        return SStringW().Format(_T("%.2f %s"), fSize, pLevelTable[level]);
-    }
+		return SStringW().Format(_T("%.2f %s"), fSize, pLevelTable[level]);
+	}
 
-    BOOL RichEditFileOle::InitOleWindow(IRichEditObjHost* pHost)
-    {
-        RichEditOleBase::InitOleWindow(pHost);
+	BOOL RichEditFileOle::InitOleWindow(IRichEditObjHost* pHost)
+	{
+		RichEditOleBase::InitOleWindow(pHost);
 
-        __int64 size = _wtoi64(_fileSize);
+		__int64 size = _wtoi64(_fileSize);
 
-        SetFileSize(size, FALSE);
-        SetFilePath(_filePath);
-        SetFileLinksVisible(_links);
-        SetFileStateString(_fileState);
+		SetFileSize(size, FALSE);
+		SetFilePath(_filePath);
+		SetFileLinksVisible(_links);
+		SetFileStateString(_fileState);
+		SetFileSuffix(_fileSuffix);
 
-        TCHAR* links[] = {
-            _T("LnkSaveFile"),
-            _T("LnkSaveFileAs"),
-            _T("LnkCancelFile"),
-            _T("LnkOpenFile"),
-            _T("LnkOpenFileDir"),
-            _T("LnkContinueFile"),
-            _T("LnkForwardFile"),
-        };
+		TCHAR* links[] = {
+			_T("LnkSaveFile"),
+			_T("LnkSaveFileAs"),
+			_T("LnkCancelFile"),
+			_T("LnkOpenFile"),
+			_T("LnkOpenFileDir"),
+			_T("LnkContinueFile"),
+			_T("LnkForwardFile"),
+			_T("LnkDownLoad"),
+		};
 
-        for (int i = 0; i < sizeof(links) / sizeof(links[0]); ++i)
-        {
-            SWindow * pWnd = _oleView.FindChildByName(links[i]);
-            if (pWnd)
-            {
-                SUBSCRIBE(pWnd, EVT_CMD, RichEditFileOle::OnLinkClicked);
-            }
-        }
+		SWindow* pWndName = _oleView.FindChildByName(L"file_suffix");
+		if (pWndName)
+		{
+			SUBSCRIBE(pWndName, EVT_CMD, RichEditFileOle::OnFileNameClicked);
+		}
 
-        return TRUE;
-    }
+		for (int i = 0; i < sizeof(links) / sizeof(links[0]); ++i)
+		{
+			SWindow * pWnd = _oleView.FindChildByName(links[i]);
+			if (pWnd)
+			{
+				SUBSCRIBE(pWnd, EVT_CMD, RichEditFileOle::OnLinkClicked);
+			}
+		}
 
-    void RichEditFileOle::SetFileSize(__int64 size, BOOL requestLayout/*=TRUE*/)
-    {
-        //_fileSizeBytes = _wtoi64(size);
-        _fileSizeBytes = size;
+		return TRUE;
+	}
 
-        SWindow * pSizeWnd = _oleView.FindChildByName(L"LblFileSize");
-        if (pSizeWnd)
-        {
-            //_fileSize = size;
+	void RichEditFileOle::SetFileSize(__int64 size, BOOL requestLayout/*=TRUE*/)
+	{
+		//_fileSizeBytes = _wtoi64(size);
+		_fileSizeBytes = size;
 
-            SStringW text;
-            text.Format(_T("%s"), GetSizeBeautyString(_fileSizeBytes));
+		SWindow * pSizeWnd = _oleView.FindChildByName(L"LblFileSize");
+		if (pSizeWnd)
+		{
+			//_fileSize = size;
 
-            pSizeWnd->SetWindowText(text);
-            if (requestLayout)
-            {
-                UpdateWindowLayout(pSizeWnd);
-            }
-        }
-    }
+			SStringW text;
+			text.Format(_T("%s"), GetSizeBeautyString(_fileSizeBytes));
 
-    void RichEditFileOle::SetFileStateString(const SStringW& str)
-    {
-        SWindow * pWnd = _oleView.FindChildByName(L"LblState");
-        if (pWnd)
-        {
-            pWnd->SetWindowText(str);
-        }
-    }
+			pSizeWnd->SetWindowText(text);
+			if (requestLayout)
+			{
+				UpdateWindowLayout(pSizeWnd);
+			}
+		}
+	}
 
-    void RichEditFileOle::SetFilePath(const SStringW& path)
-    {
-        _filePath = path;
+	void RichEditFileOle::SetFileStateString(const SStringW& str)
+	{
+		SWindow * pWnd = _oleView.FindChildByName(L"LblState");
+		if (pWnd)
+		{
+			pWnd->SetWindowText(str);
+		}
+	}
 
-        SWindow * pWnd = _oleView.FindChildByName(L"LblFileName");
-        if (pWnd)
-        {
-            _fileName = path;
-            int slash = _filePath.ReverseFind(_T('\\'));
-            if (slash > 0)
-            {
-                _fileName = _filePath.Mid(slash + 1);
-            }
+	void RichEditFileOle::SetFilePath(const SStringW& path)
+	{
+		_filePath = path;
 
-            pWnd->SetWindowText(_fileName);
-            pWnd->SetAttribute(L"tip", _fileName);
-        }
+		SWindow * pWnd = _oleView.FindChildByName(L"LblFileName");
+		if (pWnd)
+		{
+			_fileName = path;
+			int slash = _filePath.ReverseFind(_T('\\'));
+			if (slash > 0)
+			{
+				_fileName = _filePath.Mid(slash + 1);
+			}
 
-        SImageWnd * pImageWin = static_cast<SImageWnd*>(_oleView.FindChildByName(L"ImgFileIcon"));
-        if (pImageWin)
-        {
-            ISkinObj * pSkin = GetFileIconSkin(path);
-            if (pSkin)
-            {
-                pImageWin->SetSkin(pSkin);
-                pSkin->Release();
-            }
-        }
-    }
+			pWnd->SetWindowText(_fileName);
+			pWnd->SetAttribute(L"tip", _fileName);
+		}
 
-    void RichEditFileOle::SetFileLinksVisible(int links)
-    {
-        SWindow * pWnd = NULL;
-        BOOL visible = FALSE;
+		SImageWnd * pImageWin = static_cast<SImageWnd*>(_oleView.FindChildByName(L"ImgFileIcon"));
+		if (pImageWin)
+		{
+			ISkinObj * pSkin = GetFileIconSkin(path);
+			if (pSkin)
+			{
+				pImageWin->SetSkin(pSkin);
+				pSkin->Release();
+			}
+		}
+	}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkSaveFile"))
-        {
-            visible = (links & LINK_SAVE) != 0;
-            pWnd->SetVisible(visible);
-        }
+	void RichEditFileOle::SetFileSuffix(const SStringW& suffix)
+	{
+		_fileSuffix = suffix;
+		SWindow * pWnd = _oleView.FindChildByName(L"file_suffix");
+		if (pWnd)
+		{
+			SStatic* pTextSuffix = pWnd->FindChildByName2<SStatic>(L"FileSuffix");
+			if (pTextSuffix)
+			{
+				pTextSuffix->SetWindowText(_fileSuffix);
+			}
+		}
+	}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkSaveFileAs"))
-        {
-            visible = (links & LINK_SAVEAS) != 0;
-            pWnd->SetVisible(visible);
-        }
+	void RichEditFileOle::SetFileUrl(const SStringW& url)
+	{
+		_fileUrl = url;
+	}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkCancelFile"))
-        {
-            visible = (links & LINK_CANCEL) != 0;
-            pWnd->SetVisible(visible);
-        }
+	SStringW RichEditFileOle::GetFileUrl()
+	{
+		return _fileUrl;
+	}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkOpenFile"))
-        {
-            visible = (links & LINK_OPEN_FILE) != 0;
-            pWnd->SetVisible(visible);
-        }
+	void RichEditFileOle::SetFileLinksVisible(int links)
+	{
+		SWindow * pWnd = NULL;
+		BOOL visible = FALSE;
 
-        if (pWnd = _oleView.FindChildByName(L"LnkOpenFileDir"))
-        {
-            visible = (links & LINK_OPEN_DIR) != 0;
-            pWnd->SetVisible(visible);
-        }
+		if (pWnd = _oleView.FindChildByName(L"LnkSaveFile"))
+		{
+			visible = (links & LINK_SAVE) != 0;
+			pWnd->SetVisible(visible);
+		}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkContinueFile"))
-        {
-            visible = (links & LINK_CONTINUE) != 0;
-            pWnd->SetVisible(visible);
-        }
+		if (pWnd = _oleView.FindChildByName(L"LnkSaveFileAs"))
+		{
+			visible = (links & LINK_SAVEAS) != 0;
+			pWnd->SetVisible(visible);
+		}
 
-        if (pWnd = _oleView.FindChildByName(L"LnkForwardFile"))
-        {
-            visible = (links & LINK_FORWARD) != 0;
-            pWnd->SetVisible(visible);
-        }
+		if (pWnd = _oleView.FindChildByName(L"LnkCancelFile"))
+		{
+			visible = (links & LINK_CANCEL) != 0;
+			pWnd->SetVisible(visible);
+		}
 
-        pWnd = _oleView.FindChildByName(L"WndLinksContainer");
-        UpdateWindowLayout(pWnd);
-    }
+		if (pWnd = _oleView.FindChildByName(L"LnkOpenFile"))
+		{
+			visible = (links & LINK_OPEN_FILE) != 0;
+			pWnd->SetVisible(visible);
+		}
+
+		if (pWnd = _oleView.FindChildByName(L"LnkOpenFileDir"))
+		{
+			visible = (links & LINK_OPEN_DIR) != 0;
+			pWnd->SetVisible(visible);
+		}
+
+		if (pWnd = _oleView.FindChildByName(L"LnkContinueFile"))
+		{
+			visible = (links & LINK_CONTINUE) != 0;
+			pWnd->SetVisible(visible);
+		}
+
+		if (pWnd = _oleView.FindChildByName(L"LnkForwardFile"))
+		{
+			visible = (links & LINK_FORWARD) != 0;
+			pWnd->SetVisible(visible);
+		}
+
+		if (pWnd = _oleView.FindChildByName(L"LnkDownLoad"))
+		{
+			visible = (links & LINK_DOWNLOAD) != 0;
+			pWnd->SetVisible(visible);
+		}
+
+		pWnd = _oleView.FindChildByName(L"WndLinksContainer");
+		UpdateWindowLayout(pWnd);
+	}
 
     //////////////////////////////////////////////////////////////////////////
     //
