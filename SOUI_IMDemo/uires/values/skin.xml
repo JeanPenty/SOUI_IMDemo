@@ -42,8 +42,9 @@
     <!--菜单相关资源-->
     <imgframe name="skin_menu_bkg" src="PNG:IDB_PNG_MENUSKIN" left="8" top="4" right="8" bottom="12"/>
     <imgframe name="skin_menu_sep" src="PNG:IDB_PNG_MENUSEP" />
-    <imgframe name="skin_menu_itembkg" src="PNG:IDB_PNG_MENUITEMSKIN" />
+    <imglist name="skin_menu_itembkg" src="PNG:IDB_PNG_MENUITEMSKIN" states="2"/>
     <imgframe name="skin_menu_check" src="PNG:IDB_PNG_MENUCHECK" />
+    <imglist name="skin_menu_triangle" src="PNG:IDB_MENUTRIANGLE" states="2" />
 
     <imgframe name="skin_left_bubble" src="PNG:IDB_PNG_LEFTBUBBLE" left="10" top="28" right="5" bottom="10"/>
     <imgframe name="skin_right_bubble" src="PNG:IDB_PNG_RIGHTBUBBLE" left="10" top="28" right="10" bottom="10"/>

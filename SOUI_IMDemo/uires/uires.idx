@@ -80,6 +80,7 @@
     <file name="IDB_PNG_MENUSEP" path="image\menu\menu_sep.png" />
     <file name="IDB_PNG_MENUITEMSKIN" path="image\menu\menu_itemskin.png" />
     <file name="IDB_PNG_MENUCHECK" path="image\menu\menu_check.png" />
+    <file name="IDB_MENUTRIANGLE" path="image\menu\triangle.png" />
 
     <file name="IDB_PNG_LEFTBUBBLE" path="image\chat\left_bubble.png" />
     <file name="IDB_PNG_RIGHTBUBBLE" path="image\chat\right_bubble.png" />
@@ -101,5 +102,6 @@
   <SMENU>
     <file name="menu_tray" path="xml\menu_tray.xml"/>
     <file name="menu_snapshot_arrow" path="xml\menus\menu_snapshot_arrow.xml" />
+    <file name="menu_send_richeidt" path="xml\menus\send_richeidt_menu.xml"  />
   </SMENU>
 </resource>

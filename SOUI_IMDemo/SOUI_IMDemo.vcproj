@@ -45,7 +45,7 @@
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="true"
 				UsePrecompiledHeader="2"
-				BrowseInformation="0"
+				BrowseInformation="1"
 				WarningLevel="3"
 				SuppressStartupBanner="true"
 				DebugInformationFormat="4"
@@ -324,14 +324,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\uires\xml\menus\menu_snapshot_arrow.xml"
-				>
-			</File>
-			<File
-				RelativePath=".\uires\xml\menu_tray.xml"
-				>
-			</File>
-			<File
 				RelativePath=".\uires\xml\page_common_dyh.xml"
 				>
 			</File>
@@ -448,6 +440,22 @@
 				</File>
 				<File
 					RelativePath=".\uires\xml\richeditole\videoole.xml"
+					>
+				</File>
+			</Filter>
+			<Filter
+				Name="menus"
+				>
+				<File
+					RelativePath=".\uires\xml\menus\menu_snapshot_arrow.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\menu_tray.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\menus\send_richeidt_menu.xml"
 					>
 				</File>
 			</Filter>
