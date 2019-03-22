@@ -7,15 +7,25 @@ struct TreeItemData
 {
 	TreeItemData():bGroup(false){}
 	std::string strID;
-	INT32 gid;//用户的组ID
-	SStringT strImg ;//用户图像
-	SStringT strName;//用户名
+	INT32 gid;			//用户的组ID
+	SStringT strImg ;	//用户图像
+	SStringT strName;	//用户名
 	bool bGroup;
 };
 class CContactTreeViewAdapter :public STreeAdapterBase<TreeItemData>
 {
+public:
+	struct IListener
+	{
+		virtual void ContactItemClick(int nGID, const std::string& strID) = 0;
+		virtual void ContactItemDBClick(int nGID, const std::string& strID) = 0;
+		virtual void ContactItemRClick(int nGID, const std::string& strID) = 0;
+	};
 public:	
-	CContactTreeViewAdapter() {
+	CContactTreeViewAdapter(IListener* pListener) 
+	{
+		m_pListener = pListener;
+
 		TreeItemData data;
 		data.strName = L"新朋友";		
 		data.gid = 1;
@@ -77,7 +87,7 @@ public:
 
 		TreeItemData data4;
 		data4.strName = L"好友";
-		data4.gid = 4+1;
+		data4.gid = 5;
 		data4.bGroup = TRUE;
 		HSTREEITEM hRoot4 = InsertItem(data4);
 		SetItemExpanded(hRoot4, TRUE);
@@ -129,25 +139,76 @@ public:
 				pItem->GetEventSet()->setMutedState(true);			
 			}
 		}
-		if(itemType==1)
+		if(itemType == 1)
 		{
-			pItem->GetEventSet()->subscribeEvent(EVT_CMD, Subscriber(&CContactTreeViewAdapter::OnItemPanleClick, this));		
+			pItem->GetEventSet()->subscribeEvent(EVT_ITEMPANEL_CLICK, 
+				Subscriber(&CContactTreeViewAdapter::OnItemPanelClick, this));	
+			pItem->GetEventSet()->subscribeEvent(EVT_ITEMPANEL_DBCLICK, 
+				Subscriber(&CContactTreeViewAdapter::OnItemPanelDBClick, this));	
+			pItem->GetEventSet()->subscribeEvent(EVT_ITEMPANEL_RCLICK, 
+				Subscriber(&CContactTreeViewAdapter::OnItemPanelRClick, this));	
 			pItem->FindChildByName2<SImageWnd>(L"face")->SetAttribute(L"skin", ii.data.strImg, FALSE);
 		}
 		else 
 		{
-			pItem->FindChildByName(L"hr")->SetVisible(ii.data.gid!=1);		
+			pItem->FindChildByName(L"hr")->SetVisible(ii.data.gid != 1);		
 		}
 		pItem->FindChildByName(L"name")->SetWindowText(ii.data.strName);
 	}
 
-	bool OnItemPanleClick(EventArgs *pEvt)
+	bool OnItemPanelClick(EventArgs *e)
 	{
-		SItemPanel *pItemPanel = sobj_cast<SItemPanel>(pEvt->sender);
-		SASSERT(pItemPanel);
+		EventItemPanelClick* pEvt = sobj_cast<EventItemPanelClick>(e);
+		if (NULL == pEvt) return true;
+
+		SItemPanel* pItem = sobj_cast<SItemPanel>(pEvt->sender);
+		if (NULL == pItem) return true;
+
+		int hItem = static_cast<SOUI::HTREEITEM>(pItem->GetItemIndex());
+		ItemInfo& ii = m_tree.GetItemRef((HSTREEITEM)hItem);
+		if (!ii.data.bGroup)
+		{
+			m_pListener->ContactItemClick(ii.data.gid, ii.data.strID);
+		}
 
 		return true;
 	}	
+
+	bool OnItemPanelDBClick(EventArgs* e)
+	{
+		EventItemPanelDbclick* pEvt = sobj_cast<EventItemPanelDbclick>(e);
+		if (NULL == pEvt) return true;
+
+		SItemPanel* pItem = sobj_cast<SItemPanel>(pEvt->sender);
+		if (NULL == pItem) return true;
+
+		int hItem = static_cast<SOUI::HTREEITEM>(pItem->GetItemIndex());
+		ItemInfo& ii = m_tree.GetItemRef((HSTREEITEM)hItem);
+		if (!ii.data.bGroup)
+		{
+			m_pListener->ContactItemDBClick(ii.data.gid, ii.data.strID);
+		}
+
+		return true;
+	}
+
+	bool OnItemPanelRClick(EventArgs *e)
+	{
+		EventItemPanelRclick* pEvt = sobj_cast<EventItemPanelRclick>(e);
+		if (NULL == pEvt) return true;
+
+		SItemPanel* pItem = sobj_cast<SItemPanel>(pEvt->sender);
+		if (NULL == pItem) return true;
+
+		int hItem = static_cast<SOUI::HTREEITEM>(pItem->GetItemIndex());
+		ItemInfo& ii = m_tree.GetItemRef((HSTREEITEM)hItem);
+		if (!ii.data.bGroup)
+		{
+			m_pListener->ContactItemRClick(ii.data.gid, ii.data.strID);
+		}
+
+		return true;
+	}
 
 	virtual int getViewType(SOUI::HTREEITEM hItem) const
 	{
@@ -160,4 +221,7 @@ public:
 	{
 		return 2;
 	}
+
+private:
+	IListener*		m_pListener;
 };
