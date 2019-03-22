@@ -1,0 +1,16 @@
+<menuRoot
+ncskin="skin_menu_bkg"
+itemSkin="skin_menu_itembkg"
+sepSkin="skin_menu_sep"
+checkSkin="skin_menu_check"
+arrowSkin="skin_menu_triangle"
+margin="8,9,8,17"
+iconSize="10,10"
+iconPos="10,10"
+textOffset="10"
+itemHeight="30"
+iconBarWidth="30"
+minWidth="120"
+maxWidth="400"
+trCtx="MenuCtx"/>
+

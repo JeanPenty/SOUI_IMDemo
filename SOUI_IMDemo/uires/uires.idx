@@ -103,5 +103,6 @@
     <file name="menu_tray" path="xml\menu_tray.xml"/>
     <file name="menu_snapshot_arrow" path="xml\menus\menu_snapshot_arrow.xml" />
     <file name="menu_send_richeidt" path="xml\menus\send_richeidt_menu.xml"  />
+    <file name="menu_recv_richeidt" path="xml\menus\recv_richeidt_menu.xml"  />
   </SMENU>
 </resource>

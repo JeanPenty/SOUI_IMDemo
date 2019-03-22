@@ -41,6 +41,7 @@
                 colorBkgnd="rgb(255,255,255)"
                 inset="0,0,8,0"
                 sbskin="skin_vscroll"/>
-    <imgbtn name="btn_send" pos="-70,[0" skin="skin_send" font="face:微软雅黑,size:12" text="发送" align="center" valign="center" cursor="hand"/>
+    <text pos="0,[0,-0,-0" align="center" valign="center" colorText="rgb(255,100,100)">更多精彩请加群：229313785</text>
+    <imgbtn name="btn_send" pos="-70,{0" skin="skin_send" font="face:微软雅黑,size:12" text="发送" align="center" valign="center" cursor="hand"/>
   </caption>
 </include>
