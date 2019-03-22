@@ -4,6 +4,7 @@
 #pragma once
 
 #include "public.h"
+#include "CommonFunction.h"
 
 class CGlobalUnits
 {
@@ -12,7 +13,19 @@ public:
 	~CGlobalUnits(void);
 
 public:
+	PersonalsMap	m_mapPersonals;
+	GroupsMap		m_mapGroups;
+	GroupMembersMap	m_mapGrpmbrs;
+	GHsMap			m_mapGhs;
+
+public:
 	static CGlobalUnits* GetInstance();
+
+public:
+	void OperateShamDate();		//处理假数据
+
+public:
+	std::string GenerateUUID();
 };
 
 #define GlobalUnits  CGlobalUnits::GetInstance();

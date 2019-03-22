@@ -79,4 +79,22 @@ typedef struct _tagGrpmbrInfo
 }GRPMBR_INFO;
 typedef std::map<std::string, GRPMBR_INFO>		GroupMembersMap;
 
+typedef struct _tagGHInfo
+{
+	std::string m_strGhID;
+	std::string m_strName;
+	std::string m_strSummary;
+	_tagGHInfo(){
+		m_strGhID = "";
+		m_strName = "";
+		m_strSummary = "";
+	}
+	_tagGHInfo(const std::string& strID, const std::string& strName, const std::string& strSummary){
+		m_strGhID = strID;
+		m_strName = strName;
+		m_strSummary = strSummary;
+	}
+}GH_INFO;
+typedef std::map<std::string, GH_INFO>			GHsMap;
+
 #endif

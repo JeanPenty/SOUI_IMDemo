@@ -3,6 +3,7 @@
 
 #pragma once
 #include "stdafx.h"
+#include <Rpc.h>
 
 void ConvertUtf16ToUtf8(const std::wstring& strUtf16, std::string& strUtf8)
 {
@@ -59,5 +60,4 @@ void ConvertUtf8ToGBK(std::string& strUtf8GBK)
 	delete[] pGBK;
 	delete[] pUtf16;
 }
-
 #endif

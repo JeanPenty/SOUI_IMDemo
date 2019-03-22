@@ -181,10 +181,6 @@
 				>
 			</File>
 			<File
-				RelativePath=".\Adapters_ContactList.cpp"
-				>
-			</File>
-			<File
 				RelativePath=".\GlobalUnits.cpp"
 				>
 			</File>
@@ -239,10 +235,6 @@
 			>
 			<File
 				RelativePath=".\Adapter_MessageList.h"
-				>
-			</File>
-			<File
-				RelativePath=".\Adapters_ContactList.h"
 				>
 			</File>
 			<File
