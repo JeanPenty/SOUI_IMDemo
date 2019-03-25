@@ -29,7 +29,10 @@ public:
 public:
 	void AddItem(const int& nType, const std::string& strID);
 
+	void MoveItemToTop(const std::string& strID);
+	void EnsureVisable(const std::string& strID);
 	void SetCurSel(const std::string& strID);
+	int GetItemIndexByID(const std::string& strID);
 protected:
 	virtual void getView(int position, SWindow* pItem, pugi::xml_node xmlTemplate);\
 	virtual int getCount();
@@ -43,7 +46,6 @@ private:
 	std::vector<MessageListItemData*> m_vecItemInfo;
 	SListView*						  m_pOwner;
 
-	//IAdapterLasttalk_Callback*        m_pCB;
 	IListener*							m_pListener;
 
 	MemberFunctionSlot<CAdapter_MessageList, EventArgs>			m_evtItemClick;

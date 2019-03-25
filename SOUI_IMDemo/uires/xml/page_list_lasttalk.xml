@@ -7,7 +7,8 @@
           focuable="0"
           sbWid="10"
           sbSkin="skin_vscroll"
-          colorBkgnd="rgb(220,224,228)">
+          colorBkgnd="rgb(220,224,228)"
+          sbWid="8">
       <template itemHeight="60"
                 colorHover="rgb(220,219,218)"
                 colorSelected="rgb(196,196,196)"

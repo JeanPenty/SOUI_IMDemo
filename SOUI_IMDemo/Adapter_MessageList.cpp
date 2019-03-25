@@ -140,7 +140,38 @@ void CAdapter_MessageList::AddItem(const int& nType, const std::string& strID)
 	notifyDataSetChanged();
 }
 
+void CAdapter_MessageList::MoveItemToTop(const std::string& strID)
+{
+	int nIndex = GetItemIndexByID(strID);
+	if (-1 != nIndex)
+	{
+		size_t sIndex = static_cast<size_t>(nIndex);
+		if(sIndex < 0 || sIndex >= m_vecItemInfo.size())
+			return ;
+		MessageListItemData* pItemData = m_vecItemInfo[nIndex];
+		if (pItemData)
+		{
+			m_vecItemInfo.erase(m_vecItemInfo.begin() + sIndex);
+			m_vecItemInfo.insert(m_vecItemInfo.begin(), pItemData);
+		}
+	}
+}
+
+void CAdapter_MessageList::EnsureVisable(const std::string& strID)
+{
+	int nIndex = GetItemIndexByID(strID);
+	if (-1 != nIndex)
+		m_pOwner->EnsureVisible(nIndex);
+}
+
 void CAdapter_MessageList::SetCurSel(const std::string& strID)
+{
+	int nIndex = GetItemIndexByID(strID);
+	if (-1 != nIndex)
+		m_pOwner->SetSel(nIndex, TRUE);
+}
+
+int CAdapter_MessageList::GetItemIndexByID(const std::string& strID)
 {
 	int nIndex = -1;
 	for (int i = 0; i < m_vecItemInfo.size(); i++)
@@ -151,7 +182,7 @@ void CAdapter_MessageList::SetCurSel(const std::string& strID)
 			break;
 		}
 	}
-	m_pOwner->SetSel(nIndex, TRUE);
+	return nIndex;
 }
 
 bool CAdapter_MessageList::OnEventItemPanelClick(EventArgs* e)
