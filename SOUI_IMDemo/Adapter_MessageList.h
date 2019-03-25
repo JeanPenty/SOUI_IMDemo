@@ -29,6 +29,7 @@ public:
 public:
 	void AddItem(const int& nType, const std::string& strID);
 
+	void SetCurSel(const std::string& strID);
 protected:
 	virtual void getView(int position, SWindow* pItem, pugi::xml_node xmlTemplate);\
 	virtual int getCount();

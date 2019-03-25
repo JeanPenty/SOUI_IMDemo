@@ -69,22 +69,40 @@ void CAdapter_MessageList::getView(int position, SWindow* pItem, pugi::xml_node 
 	switch (pInfo->nType)
 	{
 	case 0://filehelper
-		sstrName = L"SOUI文件传输助手";
+		sstrName = L"文件传输助手";
 		break;
 	case 1://personal
-		sstrName = L"SOUI个人好友名";
+		{
+			std::string strName = "";
+			PersonalsMap::iterator iter = CGlobalUnits::GetInstance()->m_mapPersonals.find(pInfo->strID);
+			if (iter != CGlobalUnits::GetInstance()->m_mapPersonals.end())
+				strName = iter->second.m_strName;
+			else
+				strName = pInfo->strID;
+
+			sstrName = S_CA2W(strName.c_str());
+		}
 		break;
 	case 2://group
-		sstrName = L"SOUI群聊名";
+		{
+			std::string strName = "";
+			GroupsMap::iterator iter = CGlobalUnits::GetInstance()->m_mapGroups.find(pInfo->strID);
+			if (iter != CGlobalUnits::GetInstance()->m_mapGroups.end())
+				strName = iter->second.m_strGroupName;
+			else
+				strName = pInfo->strID;
+
+			sstrName = S_CA2W(strName.c_str());
+		}
 		break;
 	case 3://订阅号
-		sstrName = L"SOUI订阅号";
+		sstrName = L"订阅号";
 		break;
 	case 4://新闻
-		sstrName = L"SOUI新闻";
+		sstrName = L"新闻";
 		break;
 	case 5://公众号
-		sstrName = L"SOUI公众号";
+		sstrName = L"公众号";
 		break;
 	default:
 		break;
@@ -120,6 +138,20 @@ void CAdapter_MessageList::AddItem(const int& nType, const std::string& strID)
 
 	m_vecItemInfo.push_back(pItemData);
 	notifyDataSetChanged();
+}
+
+void CAdapter_MessageList::SetCurSel(const std::string& strID)
+{
+	int nIndex = -1;
+	for (int i = 0; i < m_vecItemInfo.size(); i++)
+	{
+		if (m_vecItemInfo[i]->strID == strID)
+		{
+			nIndex = i;
+			break;
+		}
+	}
+	m_pOwner->SetSel(nIndex, TRUE);
 }
 
 bool CAdapter_MessageList::OnEventItemPanelClick(EventArgs* e)

@@ -12,6 +12,9 @@
     <file name="XML_PAGE_COMMON_PERSONAL" path="xml\page_common_personal.xml"/>
     <file name="XML_PAGE_COMMON_GROUP" path="xml\page_common_group.xml"/>
     <file name="XML_PAGE_COMMON_FILEHELPER" path="xml\page_common_filehelper.xml"/>
+    <file name="XML_PAGE_DYH" path="xml\page_common_dyh.xml" />
+    <file name="XML_PAGE_GZH" path="xml\page_common_gzh.xml" />
+    <file name="XML_PAGE_NEWS" path="xml\page_common_news.xml" /> 
 
     <!--RichEditOLE元素相关的布局-->
     <file name="FileOleLayout" path="xml\richeditole\fileole.xml" />

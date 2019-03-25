@@ -49,21 +49,21 @@ public:
 		SetItemExpanded(hRoot1, TRUE);
 
 		data1.bGroup = false;			
-		data1.strID = "gh";
-		data1.strName = L"²âÊÔ¹«ÖÚºÅ";
+		data1.strID = "page_gzh";
+		data1.strName = L"¹«ÖÚºÅ²âÊÔ";
 		data1.strImg = L"skin_gzh";
 		InsertItem(data1, hRoot1);
 
 		TreeItemData data2;
-		data2.strName = L"ÆóÒµºÅ";
+		data2.strName = L"¶©ÔÄºÅ";
 		data2.gid = 3;		
 		data2.bGroup = TRUE;
 		HSTREEITEM hRoot2 = InsertItem(data2);
 		SetItemExpanded(hRoot2, TRUE);
 
 		data2.bGroup = false;			
-		data2.strID = "company";
-		data2.strName = L"ÆóÒµºÅ²âÊÔ";
+		data2.strID = "page_dyh";
+		data2.strName = L"¶©ÔÄºÅ²âÊÔ";
 		data2.strImg = L"skin_dyh";
 		InsertItem(data2, hRoot2);
 
