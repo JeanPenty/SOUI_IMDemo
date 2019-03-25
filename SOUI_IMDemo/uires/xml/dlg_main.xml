@@ -30,14 +30,15 @@
               colorBkgnd="rgb(196,196,196)"
               align="left"
               valign="center"
-              inset="30,0,0,0"
+              inset="30,0,30,0"
               notifyChange="1"
               font="face:微软雅黑,size:12"
               autoWordSel="0"
               colorText="#000000"
               cueColor="rgb(153,153,153)"
               cueText="搜索" />
-        <imgbtn name="btn_add" pos="[5,{0" skin="skin_add" cursor="hand"/>
+        <imgbtn pos="[-20,{8" name="search_cancel" skin="skin_search_cancel" />
+        <imgbtn name="btn_add" pos="[10,{-10" skin="skin_add" cursor="hand"/>
         <img pos="15,37" skin="skin_search" />
         <tabctrl pos="0,70,-0,-0" name="leftlist_tabctrl" tabHeight="0" colorBkgnd="rgb(220,224,228)">
           <page title="lasttalk_page">

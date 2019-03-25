@@ -99,6 +99,8 @@
     <file name="ID_EMPTY" path="image\chat\empty.png"/>
     <file name="ID_RICH_FILE_BK" path="image\chat\richframe_bkg_no_spliter.png"/>
     <file name="ID_FILE_ICON_TEXT" path="image\chat\text.png"/>
+    
+    <file name="IDB_PNG_SEARCHCANCEL" path="image\common\btn_cancel.png" />
   </PNG>
   <ICON>
     <file name="ICON_LOGO"  path="image\soui.ico"/>

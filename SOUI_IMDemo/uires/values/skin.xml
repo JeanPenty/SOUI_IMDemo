@@ -58,4 +58,6 @@
     <imgframe name="skin.rich_file_bk" src="PNG:ID_RICH_FILE_BK" left="14" top="20" right="14" bottom="20"/>
     <imgframe name="skin.file_icon_text" src="PNG:ID_FILE_ICON_TEXT" />
     <imgframe name="skin.empty"	src="PNG:ID_EMPTY"/>
+    
+    <imglist name="skin_search_cancel" src="PNG:IDB_PNG_SEARCHCANCEL" states="3" />
 	</skin>

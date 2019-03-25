@@ -181,6 +181,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\Adapter_SearchResult.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\GlobalUnits.cpp"
 				>
 			</File>
@@ -235,6 +239,10 @@
 			>
 			<File
 				RelativePath=".\Adapter_MessageList.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Adapter_SearchResult.h"
 				>
 			</File>
 			<File

@@ -140,9 +140,6 @@ void CGlobalUnits::OperateShamDate()
 			m_mapGroups.insert(std::make_pair(strUUID, GROUP_INFO(strUUID, strName, "五一四天假")));
 		}
 	}
-
-	//处理搜索索引
-	OperateSerachIndex();
 }
 
 void CGlobalUnits::OperatePinyinMap(const std::string& strPath)
@@ -207,6 +204,8 @@ void CGlobalUnits::OperateSerachIndex()
 		m_mapPinyinSearch.insert(std::make_pair(wstrSimple, SEARCH_INFO(1, iterGroup->second.m_strGroupID)));
 		m_mapPinyinSearch.insert(std::make_pair(wstrFull, SEARCH_INFO(1, iterGroup->second.m_strGroupID)));
 	}
+
+	int i = 0;
 }
 
 std::wstring CGlobalUnits::EncodeChinese(const std::wstring& wstrSrc)
