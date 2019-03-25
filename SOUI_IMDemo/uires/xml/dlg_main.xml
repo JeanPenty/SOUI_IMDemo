@@ -49,6 +49,9 @@
           <page title="favorites_page">
             <include src="LAYOUT:XML_PAGE_FAVORITES" />
           </page>
+          <page title="search_result">
+            <include src="LAYOUT:XML_PAGE_SEARCHRESULT" />
+          </page>
         </tabctrl>
       </caption>
       <caption pos="[0,25,-0,-0" colorBkgnd="rgb(230,234,238)">

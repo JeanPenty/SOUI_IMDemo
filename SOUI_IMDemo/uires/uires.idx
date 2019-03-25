@@ -8,6 +8,7 @@
     <file name="XML_PAGE_LASTTALK" path="xml\page_list_lasttalk.xml" />
     <file name="XML_PAGE_CONTACT" path="xml\page_list_contact.xml" />
     <file name="XML_PAGE_FAVORITES" path="xml\page_list_favorites.xml" />
+    <file name="XML_PAGE_SEARCHRESULT" path="xml\page_list_search.xml" />
     
     <file name="XML_PAGE_COMMON_PERSONAL" path="xml\page_common_personal.xml"/>
     <file name="XML_PAGE_COMMON_GROUP" path="xml\page_common_group.xml"/>

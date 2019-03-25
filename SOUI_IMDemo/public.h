@@ -97,4 +97,30 @@ typedef struct _tagGHInfo
 }GH_INFO;
 typedef std::map<std::string, GH_INFO>			GHsMap;
 
+typedef struct _tagSearchInfo
+{
+	int m_nType;
+	std::string m_strID;
+
+	_tagSearchInfo(){
+		m_nType = -1;
+		m_strID = "";
+	}
+	_tagSearchInfo(int nType, const std::string& strID){
+		m_nType = nType;
+		m_strID = strID;
+	}
+
+public:
+	BOOL operator<( const _tagSearchInfo& info ) const
+	{
+		return this->m_strID < info.m_strID;
+	}
+	BOOL operator==( const _tagSearchInfo& info ) const
+	{
+		return this->m_strID == info.m_strID;
+	}
+}SEARCH_INFO;
+typedef std::multimap<std::wstring, SEARCH_INFO> SearchInfosMap;
+
 #endif

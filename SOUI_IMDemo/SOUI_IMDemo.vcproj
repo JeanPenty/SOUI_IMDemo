@@ -57,7 +57,7 @@
 				Name="VCResourceCompilerTool"
 				PreprocessorDefinitions="_UNICODE;UNICODE;_DEBUG"
 				Culture="2052"
-				AdditionalIncludeDirectories="&quot;$(SOUIPATH)\soui-sys-resource&quot;"
+				AdditionalIncludeDirectories="&quot;../../soui/soui-sys-resource&quot;"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -349,6 +349,10 @@
 			</File>
 			<File
 				RelativePath=".\uires\xml\page_list_lasttalk.xml"
+				>
+			</File>
+			<File
+				RelativePath=".\uires\xml\page_list_search.xml"
 				>
 			</File>
 			<File

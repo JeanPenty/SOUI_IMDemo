@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<include>
+  <caption pos="0,0,-0,-0" colorBkgnd="rgb(220,224,228)">
+    <listview pos="0,0,-0,-0"
+          name="lv_search_result"
+          headHeight="0"
+          focuable="0"
+          sbWid="10"
+          sbSkin="skin_vscroll"
+          colorBkgnd="rgb(220,224,228)"
+          sbWid="8">
+      <template itemHeight="60"
+                colorHover="rgb(220,219,218)"
+                colorSelected="rgb(196,196,196)"
+                trackMouseEvent="1">
+        <img name="item_face" pos="10,14,@32,@32" skin="skin_personal"/>
+        <text name="item_name"
+              pos="[10,0,-0,-10"
+              align="left"
+              valign="center"
+              dotted="1"
+              colorText="#333333"
+              font="face:微软雅黑,size:14,adding:1" />
+      </template>
+    </listview>
+  </caption>
+</include>
