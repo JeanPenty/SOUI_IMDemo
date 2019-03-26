@@ -455,6 +455,14 @@
 				Name="menus"
 				>
 				<File
+					RelativePath=".\uires\xml\menus\menu_contactlist.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\menus\menu_lasttalk.xml"
+					>
+				</File>
+				<File
 					RelativePath=".\uires\xml\menus\menu_snapshot_arrow.xml"
 					>
 				</File>

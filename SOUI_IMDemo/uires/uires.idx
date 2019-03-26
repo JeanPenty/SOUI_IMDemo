@@ -163,5 +163,7 @@
     <file name="menu_snapshot_arrow" path="xml\menus\menu_snapshot_arrow.xml" />
     <file name="menu_send_richeidt" path="xml\menus\send_richeidt_menu.xml"  />
     <file name="menu_recv_richeidt" path="xml\menus\recv_richeidt_menu.xml"  />
+    <file name="menu_lasttalk_list" path="xml\menus\menu_lasttalk.xml" />
+    <file name="menu_contact_list" path="xml\menus\menu_contactlist.xml" />
   </SMENU>
 </resource>
