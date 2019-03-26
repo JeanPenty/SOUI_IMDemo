@@ -21,6 +21,10 @@ public:
 	std::multimap<std::wstring, std::wstring>	m_PinyinMap;
 	SearchInfosMap	m_mapPinyinSearch;
 	SearchInfosMap	m_mapChineseSearch;
+
+	//id-name
+	std::map<std::string, std::string>			m_mapEmojisIndex;
+	std::map<std::string, IBitmap*>				m_mapFace;
 public:
 	static CGlobalUnits* GetInstance();
 
@@ -28,6 +32,8 @@ public:
 	void OperateShamDate();		//处理假数据
 	void OperatePinyinMap(const std::string& strPath);	//处理拼音表
 	void OperateSerachIndex();
+
+	void OperateEmojis();
 
 	std::wstring EncodeChinese(const std::wstring& wstrSrc);
 	std::wstring DecodeChinese(const std::wstring& wstrSrc);

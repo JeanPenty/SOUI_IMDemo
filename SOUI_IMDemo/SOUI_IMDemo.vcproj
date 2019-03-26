@@ -20,6 +20,7 @@
 			OutputDirectory="$(SolutionDir)$(ConfigurationName)"
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="1"
+			UseOfMFC="0"
 			CharacterSet="1"
 			>
 			<Tool
@@ -185,6 +186,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\EmojiDlg.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\GlobalUnits.cpp"
 				>
 			</File>
@@ -238,6 +243,10 @@
 			Filter="h;hpp;hxx;hm;inl;inc"
 			>
 			<File
+				RelativePath=".\Adapter_EmotionTileView.h"
+				>
+			</File>
+			<File
 				RelativePath=".\Adapter_MessageList.h"
 				>
 			</File>
@@ -247,6 +256,10 @@
 			</File>
 			<File
 				RelativePath=".\CommonFunction.h"
+				>
+			</File>
+			<File
+				RelativePath=".\EmojiDlg.h"
 				>
 			</File>
 			<File
@@ -317,6 +330,10 @@
 			>
 			<File
 				RelativePath=".\uires\values\color.xml"
+				>
+			</File>
+			<File
+				RelativePath=".\uires\xml\dlg_emoji.xml"
 				>
 			</File>
 			<File
@@ -468,6 +485,10 @@
 				</File>
 				<File
 					RelativePath=".\uires\xml\menu_tray.xml"
+					>
+				</File>
+				<File
+					RelativePath=".\uires\xml\menus\recv_richeidt_menu.xml"
 					>
 				</File>
 				<File

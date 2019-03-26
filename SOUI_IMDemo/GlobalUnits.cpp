@@ -204,8 +204,34 @@ void CGlobalUnits::OperateSerachIndex()
 		m_mapPinyinSearch.insert(std::make_pair(wstrSimple, SEARCH_INFO(1, iterGroup->second.m_strGroupID)));
 		m_mapPinyinSearch.insert(std::make_pair(wstrFull, SEARCH_INFO(1, iterGroup->second.m_strGroupID)));
 	}
+}
 
-	int i = 0;
+void CGlobalUnits::OperateEmojis()
+{
+	/*	2019-03-26	yangjinpeng
+	*	处理本地目录下的emoji图片
+	*/
+	std::string strPath = "emojis\\*.png";
+	long handle;
+	struct _finddata_t fileinfo;
+	handle = _findfirst(strPath.c_str(), &fileinfo);
+	if(handle == -1)
+		return;
+	do
+	{
+		std::string strUUID = GenerateUUID();
+		m_mapEmojisIndex.insert(std::make_pair(strUUID, fileinfo.name));
+
+		std::string strTempPath;
+		strTempPath.append("emojis\\");
+		strTempPath.append(fileinfo.name);
+		SStringW sstrPath = S_CA2W(strTempPath.c_str());
+		IBitmap* pRes = SResLoadFromFile::LoadImage(sstrPath);
+		if (pRes)
+			m_mapFace.insert(std::make_pair(strUUID, pRes));
+
+	} while (!_findnext(handle, &fileinfo));
+	_findclose(handle);
 }
 
 std::wstring CGlobalUnits::EncodeChinese(const std::wstring& wstrSrc)

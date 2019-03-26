@@ -34,6 +34,7 @@
     <file name="LinkOleLayout" path="xml\richeditole\linkole.xml" />
 
     <file name="XML_DLG_SNAPSHOT" path="xml\Snapshot\dlg_snapshot.xml" />
+    <file name="XML_DLG_EMOJI" path="xml\dlg_emoji.xml" />
   </LAYOUT>
 
   <CURSOR>
