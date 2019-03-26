@@ -40,7 +40,7 @@
 			<Tool
 				Name="VCCLCompilerTool"
 				Optimization="0"
-				AdditionalIncludeDirectories="../../soui/config;../../soui/components;../../soui/SOUI\include;../../soui/utilities\include"
+				AdditionalIncludeDirectories="../../soui/config;../../soui/components;../../soui/SOUI\include;../../soui/utilities\include;.\Snapshot"
 				PreprocessorDefinitions="WIN32;_WINDOWS;STRICT;_DEBUG"
 				RuntimeLibrary="3"
 				TreatWChar_tAsBuiltInType="true"
@@ -247,6 +247,10 @@
 			</File>
 			<File
 				RelativePath=".\CommonFunction.h"
+				>
+			</File>
+			<File
+				RelativePath=".\EventsDefine.h"
 				>
 			</File>
 			<File
@@ -669,6 +673,62 @@
 			</File>
 			<File
 				RelativePath=".\extend.skins\SVscrollbar.h"
+				>
+			</File>
+		</Filter>
+		<Filter
+			Name="Snapshot"
+			>
+			<File
+				RelativePath=".\Snapshot\CBitmap.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CEdit9527.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CEdit9527.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CGdiDc.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CPixelateGrid.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CWindowEnumer.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\CWindowEnumer.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\IWordSizeAdapterCallback.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\SnapshotDlg.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\SnapshotDlg.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\SSnapshotCtrl.cpp"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\SSnapshotCtrl.h"
+				>
+			</File>
+			<File
+				RelativePath=".\Snapshot\WordSizeAdapter.h"
 				>
 			</File>
 		</Filter>

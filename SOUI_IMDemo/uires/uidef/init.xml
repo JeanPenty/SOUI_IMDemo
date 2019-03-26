@@ -12,8 +12,14 @@
     <class name="cls_btn_weblink" cursor="hand" colorText="#1e78d5" colorTextHover="#1e78d5" font="italic:1" fontHover="underline:1,italic:1" />
     <class name="cls_edit" ncSkin="_skin.sys.border" margin-x="1" margin-y="1" />
     <class name="cls_rich_link" cursor="hand" font="size:12" fontPush="underline:1,size:12" fontHover="underline:1,size:12" colorText="#1670eb" colorHover="#1670eb"/>
+    <class name="normalbtn" font="" colorText="#385e8b" colorTextDisable="#91a7c0" textMode="0x25" cursor="hand" margin-x="0"/>
+    <class name="normalimgbtn" focusable="1" drawFocusRect="0"/>
   </style>
 
   <objattr>
+    <!--不让IMGBTN得到焦点，以便获取选中项是不是文本，以动态改变-->
+    <imgbtn focusable="0" drawFocusRect="0"/>
+    <et9527 width="60" height="60" rich="1" sbWid="0" valign="top" font="size:18,face:微软雅黑" colorText="#ff00000"
+            multiLines="1" hscrollBar="1" allowBeep="1" autoSel="0" vscrollBar="1" margin="3,3,3,3" autoWordSel="0"/>
   </objattr>
 </UIDEF>

@@ -1,6 +1,8 @@
 <menuRoot ncskin="skin_menu_bkg"
+          itemSkin="skin_menu_itembkg"
           sepSkin="skin_menu_sep"
           checkSkin="skin_menu_check"
+          arrowSkin="skin_menu_triangle"
           margin="8,9,8,17" 
           iconMargin="10"
           textMargin="30"

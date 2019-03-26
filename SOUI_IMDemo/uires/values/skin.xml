@@ -60,4 +60,46 @@
     <imgframe name="skin.empty"	src="PNG:ID_EMPTY"/>
     
     <imglist name="skin_search_cancel" src="PNG:IDB_PNG_SEARCHCANCEL" states="3" />
+
+    <!--截图相关skin-->
+    <imglist name="skin_rect" src="PNG:IDB_PNG_RECT" states="4" />
+    <imglist name="skin_ellipse" src="PNG:IDB_PNG_ELLIPSE" states="4" />
+    <imglist name="skin_arrow" src="PNG:IDB_PNG_ARROW" states="4" />
+    <imglist name="skin_word" src="PNG:IDB_PNG_WORD" states="4" />
+    <imglist name="skin_finish" src="PNG:IDB_PNG_FINISH" states="4" />
+    <imglist name="skin_cancel" src="PNG:IDB_PNG_CANCEL" states="4" />
+    <imglist name="skin_save" src="PNG:IDB_PNG_SAVE" states="4" />
+    <imglist name="skin_doodle" src="PNG:IDB_PNG_DOODLE" states="4" />
+    <imglist name="skin_copy" src="PNG:IDB_PNG_COPY" states="4" />
+    <imglist name="skin_mask" src="PNG:IDB_PNG_MASK" states="4" />
+    <imglist name="skin_revoke" src="PNG:IDB_PNG_REVOKE" states="4" />
+
+    <imglist name="skin_smalldot" src="PNG:IDB_PNG_SMALLDOT" states="4" />
+    <imglist name="skin_middledot" src="PNG:IDB_PNG_MIDDLEDOT" states="4" />
+    <imglist name="skin_bigdot" src="PNG:IDB_PNG_BIGDOT" states="4" />
+
+    <imglist name="skin_c1" src="PNG:IDB_PNG_C1" states="4" />
+    <imglist name="skin_c2" src="PNG:IDB_PNG_C2" states="4" />
+    <imglist name="skin_c3" src="PNG:IDB_PNG_C3" states="4" />
+    <imglist name="skin_c4" src="PNG:IDB_PNG_C4" states="4" />
+    <imglist name="skin_c5" src="PNG:IDB_PNG_C5" states="4" />
+    <imglist name="skin_c6" src="PNG:IDB_PNG_C6" states="4" />
+    <imglist name="skin_c7" src="PNG:IDB_PNG_C7" states="4" />
+    <imglist name="skin_c8" src="PNG:IDB_PNG_C8" states="4" />
+    <imglist name="skin_c9" src="PNG:IDB_PNG_C9" states="4" />
+    <imglist name="skin_c10" src="PNG:IDB_PNG_C10" states="4" />
+    <imglist name="skin_c11" src="PNG:IDB_PNG_C11" states="4" />
+    <imglist name="skin_c12" src="PNG:IDB_PNG_C12" states="4" />
+    <imglist name="skin_c13" src="PNG:IDB_PNG_C13" states="4" />
+    <imglist name="skin_c14" src="PNG:IDB_PNG_C14" states="4" />
+    <imglist name="skin_c15" src="PNG:IDB_PNG_C15" states="4" />
+    <imglist name="skin_c16" src="PNG:IDB_PNG_C16" states="4" />
+    <imglist name="skin_c17" src="PNG:IDB_PNG_C17" states="4" />
+    <imglist name="skin_c18" src="PNG:IDB_PNG_C18" states="4" />
+    <imglist name="skin_c19" src="PNG:IDB_PNG_C19" states="4" />
+    <imglist name="skin_c20" src="PNG:IDB_PNG_C20" states="4" />
+
+    <imgframe name="skin_vline" src="PNG:IDB_PNG_VLINE" />
+    <imgframe name="skin_word_sign" src="PNG:IDB_PNG_WORDSING" />
+    <imglist name="skin_cbx_btn" src="PNG:IDB_PNG_CBXBTN" states="3" />
 	</skin>

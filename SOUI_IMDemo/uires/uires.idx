@@ -32,7 +32,18 @@
     <file name="VideoOleLayout" path="xml\richeditole\videoole.xml" />
     <file name="LocationOleLayout" path="xml\richeditole\locationole.xml" />
     <file name="LinkOleLayout" path="xml\richeditole\linkole.xml" />
+
+    <file name="XML_DLG_SNAPSHOT" path="xml\Snapshot\dlg_snapshot.xml" />
   </LAYOUT>
+
+  <CURSOR>
+    <file name="normal" path="cur\cur202.cur"/>
+    <file name="opt1" path="cur\cur104.cur"/>
+    <file name="opt2" path="cur\Handwriting.cur"/>
+    <file name="opt3_1" path="cur\cur110.cur"/>
+    <file name="opt3_2" path="cur\cur111.cur"/>
+    <file name="opt3_3" path="cur\cur112.cur"/>
+  </CURSOR>
   
   <values>
   	<file name="string" path="values\string.xml"/>
@@ -101,6 +112,48 @@
     <file name="ID_FILE_ICON_TEXT" path="image\chat\text.png"/>
     
     <file name="IDB_PNG_SEARCHCANCEL" path="image\common\btn_cancel.png" />
+
+    <!--截图相关资源-->
+    <file name="IDB_PNG_RECT" path="image\Snapshot\rect.png" />
+    <file name="IDB_PNG_ELLIPSE" path="image\Snapshot\ellipse.png" />
+    <file name="IDB_PNG_ARROW" path="image\Snapshot\arrow.png" />
+    <file name="IDB_PNG_WORD" path="image\Snapshot\word.png" />
+    <file name="IDB_PNG_FINISH" path="image\Snapshot\send.png" />
+    <file name="IDB_PNG_SAVE" path="image\Snapshot\save.png" />
+    <file name="IDB_PNG_CANCEL" path="image\Snapshot\close.png" />
+    <file name="IDB_PNG_DOODLE" path="image\Snapshot\doodle.png" />
+    <file name="IDB_PNG_COPY" path="image\Snapshot\copy.png" />
+    <file name="IDB_PNG_MASK" path="image\Snapshot\mask.png" />
+    <file name="IDB_PNG_REVOKE" path="image\Snapshot\revoke.png" />
+
+    <file name="IDB_PNG_SMALLDOT" path="image\Snapshot\dotsmall.png" />
+    <file name="IDB_PNG_MIDDLEDOT" path="image\Snapshot\dotstd.png" />
+    <file name="IDB_PNG_BIGDOT" path="image\Snapshot\dotsbig.png" />
+
+    <file name="IDB_PNG_C1" path="image\Snapshot\c1.png" />
+    <file name="IDB_PNG_C2" path="image\Snapshot\c2.png" />
+    <file name="IDB_PNG_C3" path="image\Snapshot\c3.png" />
+    <file name="IDB_PNG_C4" path="image\Snapshot\c4.png" />
+    <file name="IDB_PNG_C5" path="image\Snapshot\c5.png" />
+    <file name="IDB_PNG_C6" path="image\Snapshot\c6.png" />
+    <file name="IDB_PNG_C7" path="image\Snapshot\c7.png" />
+    <file name="IDB_PNG_C8" path="image\Snapshot\c8.png" />
+    <file name="IDB_PNG_C9" path="image\Snapshot\c9.png" />
+    <file name="IDB_PNG_C10" path="image\Snapshot\c10.png" />
+    <file name="IDB_PNG_C11" path="image\Snapshot\c11.png" />
+    <file name="IDB_PNG_C12" path="image\Snapshot\c12.png" />
+    <file name="IDB_PNG_C13" path="image\Snapshot\c13.png" />
+    <file name="IDB_PNG_C14" path="image\Snapshot\c14.png" />
+    <file name="IDB_PNG_C15" path="image\Snapshot\c15.png" />
+    <file name="IDB_PNG_C16" path="image\Snapshot\c16.png" />
+    <file name="IDB_PNG_C17" path="image\Snapshot\c17.png" />
+    <file name="IDB_PNG_C18" path="image\Snapshot\c18.png" />
+    <file name="IDB_PNG_C19" path="image\Snapshot\c19.png" />
+    <file name="IDB_PNG_C20" path="image\Snapshot\c20.png" />
+
+    <file name="IDB_PNG_WORDSING" path="image\Snapshot\word_sign.png" />
+    <file name="IDB_PNG_CBXBTN" path="image\Snapshot\cbx_btn.png" />
+    <file name="IDB_PNG_VLINE" path="image\Snapshot\vlinepx33.png" />
   </PNG>
   <ICON>
     <file name="ICON_LOGO"  path="image\soui.ico"/>

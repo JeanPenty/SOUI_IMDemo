@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SOUI title="截屏" 
+      width="1400" 
+      height="800" 
+      appWnd="0" 
+      wndType="normal" 
+      toolWindow="1" 
+      translucent="0">
+
+<root >
+  <SnapshotCtrl pos="0,0,-0,-0" name="snapshot" cursor="normal"/>
+  <text pos="15,15" 
+        name="text_title" 
+        colorText="#FFFFFF" 
+        inset="4,2,4,2" 
+        align="left"
+        valign="center"
+        colorBkgnd="#000000" 
+        font="face:微软雅黑,size:12"  visible="0"/>
+
+  <window pos="10,10" size="-1,35" name="operate_bar" layout="hbox" gravity="center" colorBkgnd="RGB(255,255,255)" visible="0">
+    <window size="2,-1"/>
+    <imgbtn size="-1,-1" name="btn_rect" skin="skin_rect" tip="矩形工具" class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_ellipse" skin="skin_ellipse" tip="椭圆工具"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_arrow" skin="skin_arrow" tip="箭头工具"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_doodle" skin="skin_doodle" tip="涂鸦工具"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_mask" skin="skin_mask" tip="马赛克工具"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_word" skin="skin_word" tip="文字工具"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_revoke" skin="skin_revoke" tip="撤销编辑"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_copy" skin="skin_copy" tip="复制到剪切板"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_save" skin="skin_save" tip="保存"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_cancel" skin="skin_cancel" tip="取消"  class="normalimgbtn"/>
+    <imgbtn size="-1,-1" name="btn_finish" skin="skin_finish" tip="完成截图"  class="normalimgbtn"/>
+    <window size="2,-1" />
+  </window>
+  <window pos="10,10" size="-1,45" name="attrbar" colorBkgnd="RGB(255,255,255)" visible="0">
+    <window name="word_attrbar" pos="0,0,@90,@45">
+      <img name="word_sign" pos="[10,14,@16,@16" skin="skin_word_sign" />
+      <comboview name="cbx_wordsize"
+           pos="[5,8,@60,@30"
+           btnSkin="skin_cbx_btn"
+           dropDown="1"
+           focusable="0"
+           dropHeight="120"
+           animateTime="1"
+           class="cls_edit">
+        <liststyle colorBkgnd="rgb(255,255,255)">
+          <template itemHeight="20"
+                    colorHover="rgb(0,160,230)"
+                    colorSelected="rgb(0,160,230)"
+                    font="face:微软雅黑,size:13">
+            <text id="1" pos="1,1,-1,-1" align="center" valign="center"></text>
+          </template>
+        </liststyle>
+      </comboview>
+    </window>
+    <window name="other_attrbar" pos="0,0,@90,@45">
+      <imgbtn name="btn_smalldot" pos="5,10" skin="skin_smalldot" check="1"/>
+      <imgbtn name="btn_middledot" pos="[5,10" skin="skin_middledot" />
+      <imgbtn name="btn_bigdot" pos="[5,10" skin="skin_bigdot" />
+    </window>
+    <img pos="[5,6" skin="skin_vline" />
+    <window name="selected_window" pos="[5,5,@35,@35" colorBkgnd="rgb(9,145,255)">
+      <window name="selected_color" pos="2,2,-2,-2" colorBkgnd="rgb(0,0,0)"/>
+    </window>
+    <window pos="[5,{0,@190,@35" layout="gridLayout" colorBkgnd="#ffffff" columnCount="10" rowCount="2" xInterval="2" yInterval="1" xGravity="fill" yGravity="fill">
+      <imgbtn name="btn_c1" columnWeight="1" rowWeight="2" skin="skin_c1" />
+      <imgbtn name="btn_c2" columnWeight="1" rowWeight="2" skin="skin_c2" />
+      <imgbtn name="btn_c3" columnWeight="1" rowWeight="2" skin="skin_c3" />
+      <imgbtn name="btn_c4" columnWeight="1" rowWeight="2" skin="skin_c4" />
+      <imgbtn name="btn_c5" columnWeight="1" rowWeight="2" skin="skin_c5" />
+      <imgbtn name="btn_c6" columnWeight="1" rowWeight="2" skin="skin_c6" />
+      <imgbtn name="btn_c7" columnWeight="1" rowWeight="2" skin="skin_c7" />
+      <imgbtn name="btn_c8" columnWeight="1" rowWeight="2" skin="skin_c8" />
+      <imgbtn name="btn_c9" columnWeight="1" rowWeight="2" skin="skin_c9" />
+      <imgbtn name="btn_c10" columnWeight="1" rowWeight="2" skin="skin_c10" />
+      <imgbtn name="btn_c11" columnWeight="1" rowWeight="2" skin="skin_c11" />
+      <imgbtn name="btn_c12" columnWeight="1" rowWeight="2" skin="skin_c12" />
+      <imgbtn name="btn_c13" columnWeight="1" rowWeight="2" skin="skin_c13" />
+      <imgbtn name="btn_c14" columnWeight="1" rowWeight="2" skin="skin_c14" />
+      <imgbtn name="btn_c15" columnWeight="1" rowWeight="2" skin="skin_c15" />
+      <imgbtn name="btn_c16" columnWeight="1" rowWeight="2" skin="skin_c16" />
+      <imgbtn name="btn_c17" columnWeight="1" rowWeight="2" skin="skin_c17" />
+      <imgbtn name="btn_c18" columnWeight="1" rowWeight="2" skin="skin_c18" />
+      <imgbtn name="btn_c19" columnWeight="1" rowWeight="2" skin="skin_c19" />
+      <imgbtn name="btn_c20" columnWeight="1" rowWeight="2" skin="skin_c20" />
+    </window>
+  </window>
+</root>
+
+</SOUI>
