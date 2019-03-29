@@ -33,6 +33,8 @@ public:
 	void EnsureVisable(const std::string& strID);
 	void SetCurSel(const std::string& strID);
 	int GetItemIndexByID(const std::string& strID);
+
+	void UpdateData(){notifyDataSetChanged();}
 protected:
 	virtual void getView(int position, SWindow* pItem, pugi::xml_node xmlTemplate);\
 	virtual int getCount();
@@ -41,6 +43,10 @@ protected:
 	bool OnEventLvSelChangeing(EventLVSelChanging* pEvt);
 	bool OnEventItemPanelClick(EventArgs* e);
 	bool OnEventItemPanelRClick(EventArgs* e);
+
+private:
+	Times stamp_to_standard(int stampTime);
+	SStringW OperateTimestamp(const std::string& strTimestamp);
 
 private:
 	std::vector<MessageListItemData*> m_vecItemInfo;

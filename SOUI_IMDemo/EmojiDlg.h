@@ -6,7 +6,12 @@ class CEmojiDlg : public SHostWnd
 	, public CAdapter_EmotionTileView::IListener
 {
 public:
-	CEmojiDlg(void);
+	struct IListener
+	{
+		virtual void EmotionTileViewItemClick(const std::string& strID) = 0;
+	};
+public:
+	CEmojiDlg(IListener* pListner);
 	~CEmojiDlg(void);
 
 public:
@@ -37,4 +42,7 @@ protected:
 
 public:
 	void SetNoSel();
+
+private:
+	IListener* m_pListner;
 };

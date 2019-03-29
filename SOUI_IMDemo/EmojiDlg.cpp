@@ -1,8 +1,9 @@
 #include "StdAfx.h"
 #include "EmojiDlg.h"
 
-CEmojiDlg::CEmojiDlg(void)
+CEmojiDlg::CEmojiDlg(IListener* pListner)
 : SHostWnd(UIRES.LAYOUT.XML_DLG_EMOJI)
+, m_pListner(pListner)
 {
 }
 
@@ -73,5 +74,5 @@ void CEmojiDlg::SetNoSel()
 
 void CEmojiDlg::OnEmotionItemClick(const std::string& strID)
 {
-	int i = 0;
+	m_pListner->EmotionTileViewItemClick(strID);
 }

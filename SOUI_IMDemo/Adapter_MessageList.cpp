@@ -118,6 +118,18 @@ void CAdapter_MessageList::getView(int position, SWindow* pItem, pugi::xml_node 
 	SStatic* pItemMessageTime = pItem->FindChildByName2<SStatic>(L"lasttalk_message_time");
 	SASSERT(pItemMessageTime);
 	pItemMessageTime->SetWindowText(L"2018/12/17");
+	std::map<std::string, std::string>::iterator iterTime = CGlobalUnits::GetInstance()->m_mapLasttalkTime.find(pInfo->strID);
+	if (iterTime != CGlobalUnits::GetInstance()->m_mapLasttalkTime.end())
+	{
+		std::string strTimestamp = iterTime->second.c_str();
+		if ("" == strTimestamp)
+			pItemMessageTime->SetWindowText(L"2018/12/17");
+		else
+		{
+			SStringW sstrTime = OperateTimestamp(strTimestamp);
+			pItemMessageTime->SetWindowText(sstrTime);
+		}
+	}
 }
 
 int CAdapter_MessageList::getCount()
@@ -231,4 +243,104 @@ bool CAdapter_MessageList::OnEventLvSelChangeing(EventLVSelChanging* pEvt)
 		pEvt->bCancel = TRUE;
 
 	return true;
+}
+
+SStringW CAdapter_MessageList::OperateTimestamp(const std::string& strTimestamp)
+{
+	std::ostringstream os;
+	time_t ttCurrent = time(NULL);
+	Times t = stamp_to_standard(atoi(strTimestamp.c_str()));
+
+	//获取当天0点的时间戳
+	time_t ttMorning = time(NULL);
+	struct tm* tmMorning = localtime(&ttMorning);
+	tmMorning->tm_hour = 0;  
+	tmMorning->tm_min = 0;  
+	tmMorning->tm_sec = 0;
+
+	unsigned int MorningTimestamp = mktime(tmMorning);
+	unsigned int SundayTimestamp = MorningTimestamp - tmMorning->tm_wday * (24*60*60);//获取上周日0点的时间戳
+
+	int nTimestamp = atoi(strTimestamp.c_str());		//消息时间戳
+	if (nTimestamp >= MorningTimestamp)		//今天消息
+	{
+		os.str("");
+		if (t.Hour > 12){
+			if (t.Min >= 10)
+				os<<"下午 "<<t.Hour<<":"<<t.Min;
+			else
+				os<<"下午 "<<t.Hour<<":0"<<t.Min;
+		}
+		else{
+			if (t.Min >= 10)
+				os<<"上午 "<<t.Hour<<":"<<t.Min;
+			else
+				os<<"上午 "<<t.Hour<<":0"<<t.Min;
+		}
+
+		std::string strTime = os.str();		
+		SStringW sstrTime = S_CA2W(strTime.c_str());
+		return sstrTime;
+	}
+	else if (nTimestamp < MorningTimestamp && nTimestamp >= MorningTimestamp - 86400){//昨天
+		return L"昨天";
+	}
+	else{	//非今天跟昨天
+		SStringW sstrResult = L"";
+		if (nTimestamp < SundayTimestamp)//消息时间小于上周星期天0点
+			sstrResult.Format(L"%d/%d/%d", t.Year, t.Mon, t.Day);		
+		else
+		{
+			int elapsed_time = (int)difftime(nTimestamp, SundayTimestamp);//上周日0点到今天0点相差时间戳
+			int elapsed_day = elapsed_time/(24*60*60);	//相差天数
+			switch (elapsed_day)
+			{
+			case 0:
+				sstrResult = L"星期日";
+				break;
+			case 1:
+				sstrResult = L"星期一";
+				break;
+			case 2:
+				sstrResult = L"星期二";
+				break;
+			case 3:
+				sstrResult = L"星期三";
+				break;
+			case 4:
+				sstrResult = L"星期四";
+				break;
+			case 5:
+				sstrResult = L"星期五";
+				break;
+			case 6:
+				sstrResult = L"星期六";
+				break;
+			default:
+				sstrResult.Format(L"%d/%d/%d", t.Year, t.Mon, t.Day);
+				break;
+			}
+		}
+		return sstrResult;
+	}
+	return L"";
+}
+
+Times CAdapter_MessageList::stamp_to_standard(int stampTime)
+{
+	time_t tick = (time_t)stampTime;
+	struct tm tm; 
+	char s[100];
+	Times standard;
+	tm = *localtime(&tick);
+	strftime(s, sizeof(s), "%Y-%m-%d %H:%M:%S", &tm); 
+
+	standard.Year = atoi(s);
+	standard.Mon = atoi(s+5);
+	standard.Day = atoi(s+8);
+	standard.Hour = atoi(s+11);
+	standard.Min = atoi(s+14);
+	standard.Second = atoi(s+17);
+
+	return standard;
 }

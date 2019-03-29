@@ -25,6 +25,9 @@ public:
 	//id-name
 	std::map<std::string, std::string>			m_mapEmojisIndex;
 	std::map<std::string, IBitmap*>				m_mapFace;
+
+	//last_talk time
+	std::map<std::string, std::string>			m_mapLasttalkTime;		//id-time
 public:
 	static CGlobalUnits* GetInstance();
 

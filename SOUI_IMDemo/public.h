@@ -4,6 +4,16 @@
 #pragma once
 #include <string>
 
+typedef struct times
+{
+	int Year;
+	int Mon;
+	int Day;
+	int Hour;
+	int Min;
+	int Second;
+}Times;
+
 typedef struct LasttalkCurSel
 {
 	std::string m_strID;
