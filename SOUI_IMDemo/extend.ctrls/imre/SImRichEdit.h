@@ -250,7 +250,6 @@ namespace SOUI
         RichEditObj*                _pLastHoverObj;     // 光标悬浮的最后一个obj
         time_t                      _lastDrawTicks;     // 记录最后一次刷新的时间，用来走定时刷新，60ticks刷一次
         CAutoRefPtr<IRegion>        _pDelayDrawRgn;     // 脏区域
-        CRect                       _originalInset;     // 原始设置的内边距
         BOOL                        _isDrawEnable;      // 能否刷新UI
         BOOL                        _scrollbarOutdated; // 标记滚动条是否需要再设置一次，详细含义见OnScroll描述
         BOOL                        _scrollbarAtBottom; // 标记滚动条是否在底部

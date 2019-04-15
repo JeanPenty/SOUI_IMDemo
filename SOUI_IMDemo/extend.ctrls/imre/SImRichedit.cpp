@@ -315,7 +315,7 @@ namespace SOUI
         CRect rc;
 
         rc = GetClientRect();
-        rc.DeflateRect(m_rcInsetPixel);
+        rc.DeflateRect(GetStyle().GetPadding());
 
         return rc;
     }
@@ -1850,21 +1850,16 @@ namespace SOUI
         // Convert Device Pixels to Himetric
 #define DTOHIMETRIC(d, dpi) (LONG)MulDiv(d, HIMETRIC_PER_INCH, dpi)
 
-        if (_originalInset.IsRectNull())
-        {
-            _originalInset = m_rcInsetPixel;
-        }
-
-        m_rcInsetPixel = _originalInset;
+		CRect rcInsetPixel = GetStyle().GetPadding();
 
         if (HasScrollBar(TRUE))
         {
-            m_rcInsetPixel.right -= GetScrollBarRect(TRUE).Width();
+            rcInsetPixel.right -= GetScrollBarRect(TRUE).Width();
         }
 
         if (HasScrollBar(FALSE))
         {
-            m_rcInsetPixel.bottom -= GetScrollBarRect(FALSE).Height();
+            rcInsetPixel.bottom -= GetScrollBarRect(FALSE).Height();
         }
 
         //
@@ -1877,12 +1872,6 @@ namespace SOUI
 
         SPanel::OnNcCalcSize(bCalcValidRects, lParam);
 
-        CRect rcInsetPixel = m_rcInsetPixel;
-        if (!m_fRich && m_fSingleLineVCenter && !(m_dwStyle&ES_MULTILINE))
-        {
-            rcInsetPixel.top = rcInsetPixel.bottom = (m_rcClient.Height() - m_nFontHeight) / 2;
-        }
-
         m_siHoz.nPage = m_rcClient.Width() - rcInsetPixel.left - rcInsetPixel.right;
         m_siVer.nPage = m_rcClient.Height() - rcInsetPixel.top - rcInsetPixel.bottom;
 
@@ -1894,10 +1883,10 @@ namespace SOUI
         m_sizelExtent.cx = DTOHIMETRIC(m_rcClient.Width(), xPerInch);
         m_sizelExtent.cy = DTOHIMETRIC(m_rcClient.Height(), yPerInch);
 
-        m_rcInset.left = DTOHIMETRIC(m_rcInsetPixel.left, xPerInch);
-        m_rcInset.right = DTOHIMETRIC(m_rcInsetPixel.right, xPerInch);
-        m_rcInset.top = DTOHIMETRIC(m_rcInsetPixel.top, yPerInch);
-        m_rcInset.bottom = DTOHIMETRIC(m_rcInsetPixel.bottom, yPerInch);
+        m_rcInset.left = DTOHIMETRIC(rcInsetPixel.left, xPerInch);
+        m_rcInset.right = DTOHIMETRIC(rcInsetPixel.right, xPerInch);
+        m_rcInset.top = DTOHIMETRIC(rcInsetPixel.top, yPerInch);
+        m_rcInset.bottom = DTOHIMETRIC(rcInsetPixel.bottom, yPerInch);
 
         return 0;
     }
